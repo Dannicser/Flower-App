@@ -1,0 +1,73 @@
+@import "../../../style/default_variables.scss";
+.main__enter__container {
+  .enter {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .enter__container {
+      display: flex;
+      justify-content: space-between;
+
+      //
+
+      height: 28px;
+      width: 343px;
+      border-radius: 8px;
+      padding: 2px;
+      padding-left: 3px;
+      background: rgba(118, 118, 128, 0.12);
+      margin-bottom: 35px;
+
+      .enter__by__email {
+        width: 50%;
+        height: 23px;
+        border-radius: 7px;
+        padding: 3px 12px 4px 12px;
+        font-weight: 60;
+        text-align: center;
+        background: linear-gradient(0deg, #ffffff, #ffffff),
+          linear-gradient(0deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04));
+        box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.12);
+        font-weight: 600;
+      }
+      .enter__by__phone {
+        width: 50%;
+        height: 24px;
+        border-radius: 7px;
+        padding: 3px 12px 4px 12px;
+
+        text-align: center;
+      }
+    }
+  }
+
+  .enter__agreement {
+    margin: 20px 0px 40px 0px;
+    .agreement__text {
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 14px;
+      letter-spacing: 0px;
+      text-align: center;
+      color: $gray;
+      padding: 0px 10px;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .main__enter__container {
+    .enter {
+      .enter__container {
+        width: 300px;
+      }
+    }
+
+    .enter__agreement {
+      .agreement__text {
+        font-size: 10px;
+      }
+    }
+  }
+}

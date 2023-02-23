@@ -1,0 +1,16 @@
+.input__container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  .input__gui {
+    display: block;
+    height: 48px;
+    width: 280px;
+    border-radius: 9px;
+    border: 1px solid rgba(210, 210, 210, 1);
+    padding: 5px 10px;
+  }
+  input:focus {
+    outline: 0;
+  }
+}

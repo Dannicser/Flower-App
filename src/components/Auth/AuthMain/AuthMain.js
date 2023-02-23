@@ -1,6 +1,7 @@
 import "./Auth.scss";
-import { vk, google, facebook } from "./icons/index";
-const Auth = () => {
+import { vk, google, facebook } from "../icons/index";
+import { NavLink } from "react-router-dom";
+const AuthMain = () => {
   return (
     <div className="auth__wrapper">
       <div className="auth__bg"></div>
@@ -14,7 +15,11 @@ const Auth = () => {
         </div>
         <div className="auth__btn__container">
           <div className="auth__btn">По номеру телефона</div>
-          <div className="auth__btn auth__white__btn">По электронной почте</div>
+          <NavLink to={"/profile/auth"}>
+            <div className="auth__btn auth__white__btn">
+              По электронной почте
+            </div>
+          </NavLink>
         </div>
         <div className="auth__line__container">
           <div className="auth__line"></div>
@@ -33,7 +38,7 @@ const Auth = () => {
               <img className="auth__icon" src={google} alt="" />
             </div>
             <div className="auth__title__icons">Google</div>
-          </div>{" "}
+          </div>
           <div className="auth__item">
             <div className="auth__bg__icon">
               <img className="auth__icon" src={facebook} alt="" />
@@ -46,4 +51,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default AuthMain;

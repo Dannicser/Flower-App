@@ -1,11 +1,10 @@
-@import "../../style/default_variables.scss";
-
+@import "../../../style/default_variables.scss";
 .auth__wrapper {
   flex: 1;
 
   .auth__bg {
     width: 100%;
-    background: url("./img/auth_rose.png") center center/cover no-repeat;
+    background: url("../img/auth_rose.png") center center/cover no-repeat;
     height: 320px;
   }
   .auth__enter__container {
