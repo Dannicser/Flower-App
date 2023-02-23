@@ -1,0 +1,7 @@
+@import "../../../style/default_variables.scss";
+
+.gui__header {
+  @include main_style_title;
+  @include main_header;
+  padding: 10px;
+}

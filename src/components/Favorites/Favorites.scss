@@ -1,0 +1,9 @@
+@import "../../style/default_variables.scss";
+.favorites__wrapper {
+  height: 100%;
+
+  .favorites__title__goods {
+    @include main_style_title;
+    @include main_header;
+  }
+}

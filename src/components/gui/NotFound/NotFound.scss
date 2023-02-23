@@ -1,0 +1,30 @@
+@import "../../../style/default_variables.scss";
+.empty__wrapper {
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .empty__container {
+    text-align: center;
+    padding: 0px 10px;
+
+    .empty__img {
+      margin-bottom: 15px;
+    }
+    .empty__title {
+      @include main_style_title;
+      margin-bottom: 10px;
+    }
+    .empty__description {
+      color: $main_color;
+      line-height: 22px;
+    }
+  }
+}
+
+@media (max-width: 355px) {
+  .empty__description {
+    font-size: 14px;
+  }
+}
