@@ -2,14 +2,14 @@
 
 nav {
   position: fixed;
-  height: 90px;
+  height: 70px;
   flex-grow: 0; //
   padding: 0;
   width: 100%;
   z-index: 12;
   background-color: white;
   hr {
-    margin-top: 25px;
+    margin-top: 0px;
   }
 
   bottom: 0;
@@ -40,7 +40,7 @@ nav {
 @media (max-width: 576px) {
   nav {
     .nav_line {
-      margin: 10px auto;
+      margin: 0px auto;
     }
 
     .nav__item {

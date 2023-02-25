@@ -3,6 +3,9 @@ import "./Navbar.scss";
 
 import { navbar, basket, favorites, profile, search } from "./icons/index.js";
 const Navbar = () => {
+  const auth = false;
+  const page = auth ? "/profile" : "profile/auth";
+
   return (
     <nav>
       <hr />
@@ -32,7 +35,7 @@ const Navbar = () => {
               <div className="nav__title">Избранное</div>
             </div>
           </NavLink>
-          <NavLink to="/profile">
+          <NavLink to={page}>
             <div className="nav__item">
               <img className="nav__icon" src={profile} alt="" />
               <div className="nav__title">Профиль</div>

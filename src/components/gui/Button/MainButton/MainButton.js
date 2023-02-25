@@ -1,10 +1,10 @@
-import "./Button.scss";
+import "./MainButton.scss";
 
-const Button = ({ text, width }) => {
+const MainButton = ({ text }) => {
   return (
     <div className="btn__gui__container">
       <div className="btn__gui">{text}</div>
     </div>
   );
 };
-export default Button;
+export default MainButton;

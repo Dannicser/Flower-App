@@ -1,0 +1,35 @@
+.setting__profile__wrapper {
+  margin-top: 30px;
+  padding: 0px 20px;
+  .input__list {
+    margin-bottom: 30px;
+    .input__item {
+      //   width: 280px;
+      .input__label {
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.change__password {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 15px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.sign__out {
+  color: red;
+  font-weight: 500;
+}
+
+// @media (max-height: 700px) {
+//   .setting__profile__wrapper {
+//     margin-bottom: 100px;
+//   }
+// }
+// !!!! проблема при маленькой высоте!!!

@@ -11,6 +11,19 @@ $gray: rgba(121, 121, 121, 1);
   background: rgba(207, 34, 93, 1);
   color: rgba(255, 255, 255, 1);
 }
+
+@mixin second_btn {
+  background-color: white;
+  color: $main_color;
+  border: 2px solid $main_color;
+  text-align: center;
+  height: 48px;
+  width: 150px;
+  border-radius: 10px;
+  padding: 14px 16px 10px 16px;
+  margin: 15px 0px;
+}
+
 @mixin main_style_title {
   font-size: 18px;
   font-weight: 600;
