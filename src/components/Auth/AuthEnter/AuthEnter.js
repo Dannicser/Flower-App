@@ -1,7 +1,10 @@
 import Header from "../../gui/Header/Header";
 import "./AuthEnter.scss";
 import Input from "../../gui/Input/Input";
-import Button from "../../gui/Button/Button.js";
+import NoteFound from "../../gui/NotFound/NotFound";
+import success from "../../../images/success_.png";
+import MainButton from "../../gui/Button/MainButton/MainButton";
+
 const AuthEnterWithEmail = () => {
   return (
     <div className="main__enter__container">
@@ -20,8 +23,19 @@ const AuthEnterWithEmail = () => {
           политики конфиденциальности
         </div>
       </div>
-      <Button text={"Войти"} />
+      <MainButton text={"Войти"} />
     </div>
+  );
+};
+
+const Success = () => {
+  return (
+    <NoteFound
+      img={success}
+      title={"Готово"}
+      descr={"Вы успешно пошли в аккаунт"}
+      button={true}
+    />
   );
 };
 
