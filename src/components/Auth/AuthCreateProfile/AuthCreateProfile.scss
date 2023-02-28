@@ -1,0 +1,17 @@
+.auth__create__profile__wrapper {
+  padding: 0px 20px;
+  .auth__create__list {
+    margin-top: 25px;
+    .auth__create__profile__item {
+      .auth__item__title {
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.auth__loader {
+  text-align: center;
+  margin-top: 30px;
+}

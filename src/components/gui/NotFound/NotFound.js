@@ -1,7 +1,7 @@
 import SecondButton from "../Button/SecondButton/SecondButton";
 import "./NotFound.scss";
 
-const NotFound = ({ img, descr, title, button }) => {
+const NotFound = ({ img, descr, title, button, textButton = "Профиль" }) => {
   return (
     <div className="empty__wrapper">
       <div className="empty__container">
@@ -10,7 +10,9 @@ const NotFound = ({ img, descr, title, button }) => {
         </div>
         <div className="empty__title">{title}</div>
         <div className="empty__description">{descr}</div>
-        {button ? <SecondButton text={"Профиль"} /> : null}
+        <a href="/profile">
+          {button ? <SecondButton text={textButton} /> : null}
+        </a>
       </div>
     </div>
   );

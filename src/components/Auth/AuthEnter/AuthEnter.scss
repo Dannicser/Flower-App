@@ -1,5 +1,6 @@
 @import "../../../style/default_variables.scss";
 .main__enter__container {
+  height: 100%;
   .enter {
     margin-top: 30px;
     width: 100%;
@@ -54,6 +55,20 @@
       padding: 0px 10px;
     }
   }
+  .enter__create__profile {
+    padding: 5px;
+    margin-top: 15px;
+    font-size: 14px;
+    color: $main_color;
+    text-align: center;
+  }
+}
+.enter__error {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 10px;
+  color: rgba(207, 34, 93, 1);
+  font-weight: 100;
 }
 
 @media (max-width: 380px) {

@@ -1,47 +1,82 @@
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import UseProfileService from "../../../services/UseProfileService";
 import Header from "../../gui/Header/Header";
 import Input from "../../gui/Input/Input";
-import { arrow } from "../MainProfile/icons";
+import { arrow, settings } from "../MainProfile/icons";
 import "./SettingsProfile.scss";
 
-const settings = {
+const settingOnStyle = {
   height: "42px",
   width: "100%",
 };
 
 const SettingsProfile = () => {
+  const { onChangeProfileSettings, onGetProfileSettings } = UseProfileService();
+
+  const [inputState, setInputState] = useState({});
+
+  useEffect(() => {
+    onGetProfileSettings().then((data) => setInputState(data));
+  }, []);
+
+  const onRequest = () => {
+    onChangeProfileSettings(inputState);
+  };
+
+  const onHundlerInput = (value, name) => {
+    setInputState((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const onLogout = () => {
+    localStorage.removeItem("token");
+  };
+
   return (
     <>
-      <Header title={"Настройки"} extension={true} />
+      <Header onRequest={onRequest} title={"Настройки"} extension={true} />
       <div className="setting__profile__wrapper">
         <div className="profile__input__wrapper">
           <ul className="input__list">
             <li className="input__item">
               <div className="input__label">Имя</div>
-              <Input type={"text"} placeholder={"Даниил"} settings={settings} />
+              <Input
+                onHundlerInput={onHundlerInput}
+                name={"user_name"}
+                type={"text"}
+                placeholder={inputState.user_name}
+                settings={settingOnStyle}
+              />
             </li>
             <li className="input__item">
               <div className="input__label">Телефон</div>
               <Input
-                type={"number"}
-                placeholder={"8-890-999-12-11"}
-                settings={settings}
+                onHundlerInput={onHundlerInput}
+                name={"user_phone"}
+                type={"text"}
+                placeholder={inputState.user_phone}
+                settings={settingOnStyle}
               />
             </li>
             <li className="input__item">
               <div className="input__label">Email</div>
               <Input
+                onHundlerInput={onHundlerInput}
+                name={"user_email"}
                 type={"text"}
-                placeholder={"mail.mail@ru"}
-                settings={settings}
+                placeholder={inputState.user_email}
+                settings={settingOnStyle}
               />
             </li>
             <li className="input__item">
               <div className="input__label">День рождения</div>
               <Input
-                type={"number"}
-                placeholder={"25.08.2002"}
-                settings={settings}
+                onHundlerInput={onHundlerInput}
+                type={"text"}
+                name={"user_birthday"}
+                placeholder={inputState.user_birthday}
+                settings={settingOnStyle}
               />
             </li>
           </ul>
@@ -50,9 +85,14 @@ const SettingsProfile = () => {
           <div className="text">Изменить пароль</div>
           <img src={arrow} alt="" />
         </div>
-        <div className="sign__out">Выйти из аккаунта</div>
+        <a href="/">
+          <div onClick={() => onLogout()} className="sign__out">
+            Выйти из аккаунта
+          </div>
+        </a>
       </div>
     </>
   );
 };
+
 export default SettingsProfile;

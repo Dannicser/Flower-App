@@ -1,0 +1,71 @@
+import useHttp from "../components/hooks/http.hook";
+import api_base from "./api_base";
+
+const UseAuthService = () => {
+  const { request, result, loading, error } = useHttp();
+
+  const API_BASE = "https://identitytoolkit.googleapis.com/v1/accounts:";
+  const ACTION = "signInWithPassword?key=";
+  const API_KEY = "AIzaSyDmdsSeJ-OAW-XxCgHaPtXwqi5YYHH3gw4";
+
+  const onGetAuthWithEmail = async (body) => {
+    const data = await request(
+      `${API_BASE}${ACTION}${API_KEY}`,
+      {
+        ...body,
+        returnSecureToken: true,
+      },
+      "post"
+    );
+
+    if (data.data) {
+      const idUser = data.data.localId;
+      localStorage.setItem("token", idUser);
+      console.log(idUser);
+    }
+  };
+
+  const onCreateProfile = async ({
+    user_email,
+    user_password,
+    user_phone,
+    user_name,
+  }) => {
+    let user = {
+      email: user_email,
+      password: user_password,
+      returnSecureToken: true,
+    };
+
+    const data = await request(
+      `${API_BASE}signUp?key=${API_KEY}`,
+      user,
+      "post"
+    );
+
+    const userId = await data.data.localId;
+
+    localStorage.setItem("token", userId);
+
+    const response = await request(
+      `${api_base}/users/${userId}.json`,
+      user,
+      "post"
+    );
+
+    user = { user_email, user_phone, user_name };
+
+    const put = await request(`${api_base}/users/${userId}.json`, user, "put"); // так фикшу баг
+  };
+
+  return {
+    request,
+    loading,
+    error,
+    result,
+    onGetAuthWithEmail,
+    onCreateProfile,
+  };
+};
+
+export default UseAuthService;

@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import "./Navbar.scss";
-
 import { navbar, basket, favorites, profile, search } from "./icons/index.js";
+
 const Navbar = () => {
-  const auth = false;
+  const auth = localStorage.getItem("token");
   const page = auth ? "/profile" : "profile/auth";
 
   return (

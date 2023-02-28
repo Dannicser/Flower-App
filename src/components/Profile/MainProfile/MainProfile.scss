@@ -31,14 +31,14 @@
 
   .profile__functions__list {
     .profile__item__function {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(26, 30, 38, 0.1);
-      padding: 20px 0px;
-      .mr {
-        padding-left: 3px;
+      a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(26, 30, 38, 0.1);
+        padding: 16px 0px;
       }
+
       .profile__title {
         display: flex;
         align-items: center;
@@ -46,6 +46,10 @@
       .profile__text {
         @include main_style_title;
         font-weight: 500;
+      }
+      .margin {
+        margin-left: 3px;
+        margin-right: 13px;
       }
     }
     img {
