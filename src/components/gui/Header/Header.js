@@ -2,9 +2,20 @@ import "./Header.scss";
 import back from "../../../images/back.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 
-const Header = ({ title, extension = false, onRequest = null, button }) => {
+const Header = ({
+  title,
+  extension = false,
+  textButton = "Готово",
+  onRequest = null,
+  button,
+}) => {
   return extension ? (
-    <ExtensionHeader button={button} onRequest={onRequest} title={title} />
+    <ExtensionHeader
+      textButton={textButton}
+      button={button}
+      onRequest={onRequest}
+      title={title}
+    />
   ) : (
     <DefaultHeader title={title} />
   );
@@ -18,12 +29,11 @@ const DefaultHeader = ({ title }) => {
   );
 };
 
-const ExtensionHeader = ({ title, onRequest, button = true }) => {
+const ExtensionHeader = ({ title, onRequest, textButton, button = true }) => {
   const navigate = useNavigate();
 
   const goBack = () => navigate(-1);
 
-  const style = {};
   return (
     <div className="gui__header">
       <NavLink onClick={goBack}>
@@ -31,12 +41,10 @@ const ExtensionHeader = ({ title, onRequest, button = true }) => {
           <img src={back} alt="" />
         </div>
       </NavLink>
-      <div style={style} className="gui__header__title">
-        {title}
-      </div>
+      <div className="gui__header__title">{title}</div>
       {button ? (
         <div onClick={() => onRequest()} className="gui__header__button">
-          {"Готово"}
+          {textButton}
         </div>
       ) : (
         <div className="mr" />

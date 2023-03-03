@@ -6,6 +6,7 @@ const Input = ({
   settings = {},
   name,
   onHundlerInput,
+  disabled = false,
   value,
 }) => {
   return (
@@ -18,6 +19,7 @@ const Input = ({
         placeholder={placeholder}
         className="input__gui"
         value={value}
+        disabled={disabled}
       />
     </div>
   );

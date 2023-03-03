@@ -1,3 +1,4 @@
+import "./Loader.scss";
 const Loader = () => {
   return (
     <div className="spinner-border ms-1" role="status">

@@ -21,7 +21,7 @@ const UseAuthService = () => {
     if (data.data) {
       const idUser = data.data.localId;
       localStorage.setItem("token", idUser);
-      console.log(idUser);
+      localStorage.setItem("TokenForChangePassword", data.data.idToken);
     }
   };
 
@@ -47,15 +47,47 @@ const UseAuthService = () => {
 
     localStorage.setItem("token", userId);
 
+    localStorage.setItem("TokenForChangePassword", data.data.idToken);
+
     const response = await request(
-      `${api_base}/users/${userId}.json`,
+      `${api_base}/users/${userId}/user_info.json`,
       user,
       "post"
     );
 
     user = { user_email, user_phone, user_name };
 
-    const put = await request(`${api_base}/users/${userId}.json`, user, "put"); // так фикшу баг
+    const put = await request(
+      `${api_base}/users/${userId}/user_info.json`,
+      user,
+      "put"
+    ); // так фикшу баг
+  };
+
+  const onRestorePasswordWithEmail = async (body) => {
+    const response = await request(
+      `${API_BASE}sendOobCode?key=${API_KEY}`,
+      {
+        ...body,
+        requestType: "PASSWORD_RESET",
+      },
+      "post"
+    );
+  };
+
+  const onUpdatePassword = async (body) => {
+    const idToken = localStorage.getItem("TokenForChangePassword");
+    const response = await request(
+      `${API_BASE}update?key=${API_KEY}`,
+      {
+        idToken,
+        ...body,
+        returnSecureToken: true,
+      },
+      "post"
+    );
+
+    localStorage.setItem("TokenForChangePassword", response.data.idToken);
   };
 
   return {
@@ -65,6 +97,8 @@ const UseAuthService = () => {
     result,
     onGetAuthWithEmail,
     onCreateProfile,
+    onRestorePasswordWithEmail,
+    onUpdatePassword,
   };
 };
 

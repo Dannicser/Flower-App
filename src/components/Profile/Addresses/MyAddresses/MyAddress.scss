@@ -1,0 +1,43 @@
+@import "../../../../style/default_variables.scss";
+.addresses__wrapper {
+  padding: 0px 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  .address__list {
+    .address__item {
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ebebec;
+      margin-bottom: 15px;
+      .address__title {
+        @include main_style_title;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 7px;
+
+        img {
+          display: block;
+          width: 30px;
+          height: 30px;
+          padding: 5px;
+          background-color: $main_color;
+          border-radius: 60%;
+          margin-left: 10px;
+          margin-bottom: 0;
+        }
+      }
+      .address__other__info {
+        color: $main_color;
+        line-height: 20px;
+        font-size: 14px;
+        span {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+.address__container__btn {
+  width: 150px;
+  margin: 0 auto;
+  padding-bottom: 90px;
+}

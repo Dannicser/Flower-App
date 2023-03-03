@@ -44,7 +44,7 @@ const AuthEnterWithEmail = () => {
 
 const View = ({ onRequest, onHundlerInput, loading, error }) => {
   return (
-    <>
+    <div className="enter__wrapper">
       <div className="enter">
         <div className="enter__container">
           <div className="enter__by__email">По почте</div>
@@ -63,6 +63,11 @@ const View = ({ onRequest, onHundlerInput, loading, error }) => {
         type={"password"}
         placeholder={"*******"}
       />
+      <NavLink to={"/profile/auth/enter_with_email/forgot_password"}>
+        <div className="enter__additional__function">
+          <div className="enter__forgot__password">Забыли пароль?</div>
+        </div>
+      </NavLink>
       <div className="enter__agreement">
         <div className="agreement__text">
           Продолжая, вы принимаете условия пользовательского <br /> соглашения и
@@ -72,11 +77,11 @@ const View = ({ onRequest, onHundlerInput, loading, error }) => {
       <div onClick={() => onRequest()}>
         <MainButton loader={loading} text={"Войти"} />
       </div>
-      {error ? <p className="enter__error"> Что-то пошло не так</p> : null}
+      {error ? <p className="error_message"> Что-то пошло не так</p> : null}
       <NavLink to={"/profile/create_profile"}>
         <div className="enter__create__profile">У меня нет аккаунта</div>
       </NavLink>
-    </>
+    </div>
   );
 };
 
@@ -87,6 +92,8 @@ const Success = () => {
       title={"Готово"}
       descr={"Вы успешно пошли в аккаунт"}
       button={true}
+      reload={true}
+      path="/profile"
     />
   );
 };

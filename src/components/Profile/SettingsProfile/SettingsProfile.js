@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import UseProfileService from "../../../services/UseProfileService";
 import Header from "../../gui/Header/Header";
 import Input from "../../gui/Input/Input";
-import { arrow, settings } from "../MainProfile/icons";
+import { arrow } from "../MainProfile/icons";
+import { NavLink } from "react-router-dom";
 import "./SettingsProfile.scss";
 
 const settingOnStyle = {
@@ -65,6 +66,7 @@ const SettingsProfile = () => {
                 onHundlerInput={onHundlerInput}
                 name={"user_email"}
                 type={"text"}
+                disabled={true}
                 placeholder={inputState.user_email}
                 settings={settingOnStyle}
               />
@@ -81,10 +83,15 @@ const SettingsProfile = () => {
             </li>
           </ul>
         </div>
-        <div className="change__password">
-          <div className="text">Изменить пароль</div>
-          <img src={arrow} alt="" />
-        </div>
+        <NavLink
+          style={{ color: "black" }}
+          to={"/profile/settings/change_password"}
+        >
+          <div className="change__password">
+            <div className="text">Изменить пароль</div>
+            <img src={arrow} alt="" />
+          </div>
+        </NavLink>
         <a href="/">
           <div onClick={() => onLogout()} className="sign__out">
             Выйти из аккаунта

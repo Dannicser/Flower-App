@@ -1,7 +1,16 @@
+import { NavLink } from "react-router-dom";
 import SecondButton from "../Button/SecondButton/SecondButton";
 import "./NotFound.scss";
 
-const NotFound = ({ img, descr, title, button, textButton = "Профиль" }) => {
+const NotFound = ({
+  img,
+  descr,
+  title,
+  button,
+  textButton = "Профиль",
+  path = "profile",
+  reload = false,
+}) => {
   return (
     <div className="empty__wrapper">
       <div className="empty__container">
@@ -10,9 +19,13 @@ const NotFound = ({ img, descr, title, button, textButton = "Профиль" }) 
         </div>
         <div className="empty__title">{title}</div>
         <div className="empty__description">{descr}</div>
-        <a href="/profile">
-          {button ? <SecondButton text={textButton} /> : null}
-        </a>
+        {reload ? (
+          <a href={path}>{<SecondButton text={textButton} />}</a>
+        ) : (
+          <NavLink to={path}>
+            {button ? <SecondButton text={textButton} /> : null}
+          </NavLink>
+        )}
       </div>
     </div>
   );
