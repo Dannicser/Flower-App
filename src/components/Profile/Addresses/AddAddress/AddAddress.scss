@@ -1,7 +1,7 @@
 .address_wrapper__form {
   margin-top: 30px;
 
-  padding: 0px 40px;
+  padding: 0px 40px 80px 40px;
 
   .address__list {
     margin-bottom: 10px;
@@ -25,25 +25,6 @@
       }
     }
   }
-
-  .address__add__success {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    padding: 15px 25px;
-    font-weight: 500;
-    border-radius: 20px;
-    font-size: 15px;
-    //
-    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.16);
-    box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.16);
-
-    img {
-      display: block;
-      margin-right: 10px;
-    }
-  }
 }
 
 @media (max-width: 370px) {
@@ -51,7 +32,7 @@
     .address__list {
       .address__item {
         .address__title {
-          font-size: 13px;
+          font-size: 11px;
         }
       }
     }

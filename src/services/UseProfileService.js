@@ -2,7 +2,7 @@ import useHttp from "../components/hooks/http.hook";
 import api_base from "./api_base.js";
 
 const UseProfileService = () => {
-  const userId = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
 
   const { request, result, loading, error } = useHttp();
 
@@ -12,8 +12,6 @@ const UseProfileService = () => {
       user,
       "put"
     );
-
-    document.location.reload();
   };
 
   const onGetProfileSettings = async () => {
@@ -24,52 +22,13 @@ const UseProfileService = () => {
     return response.data;
   };
 
-  const onAddNewAddress = async (body) => {
-    const response = await request(
-      `${api_base}/users/${userId}/address/.json`,
-      { ...body, id: Math.random().toString().slice(2) },
-      "post"
-    );
-  };
-
-  const onGetAddresses = async () => {
-    const response = await request(
-      `${api_base}/users/${userId}/address.json`,
-      "get"
-    );
-
-    if (response.data != null) {
-      localStorage.setItem(
-        "idAddresses",
-        JSON.stringify(Object.keys(response.data))
-      );
-
-      return Object.values(response.data);
-    }
-    return [];
-  };
-
-  const onDeleteAddress = async (id) => {
-    const idAddress = await JSON.parse(localStorage.getItem("idAddresses"));
-
-    const response = await request(
-      `${api_base}/users/${userId}/address/${idAddress[id]}.json`,
-      null,
-      "delete"
-    );
-  };
-
   return {
     onChangeProfileSettings,
     onGetProfileSettings,
-    onAddNewAddress,
     result,
     loading,
     error,
-    onGetAddresses,
-    onDeleteAddress,
   };
 };
-export default UseProfileService;
 
-// восстановление пароля делай завтра
+export default UseProfileService;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import UseAuthService from "../../../../services/UseAuthService";
 import MainButton from "../../../gui/Button/MainButton/MainButton";
-import Header from "../../../gui/Header/Header";
+import Header from "../../../gui/Headers/Header/Header.js";
 import Input from "../../../gui/Input/Input";
 import NotFound from "../../../gui/NotFound/NotFound";
 import success from "../../../../images/success_.png";

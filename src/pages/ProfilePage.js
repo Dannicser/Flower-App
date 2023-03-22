@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import AuthMain from "../components/Auth/AuthMain/AuthMain.js";
 import AuthEnter from "../components/Auth/AuthEnter/AuthEnter";
 import MainProfile from "../components/Profile/MainProfile/MainProfile";

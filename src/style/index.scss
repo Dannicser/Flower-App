@@ -53,3 +53,18 @@ code {
 #root {
   height: 100%;
 }
+
+a {
+  color: black;
+  font-weight: 500;
+}
+
+@media (min-width: 850px) {
+  #root {
+    margin: 0 auto;
+    background: url("../images/not_support_on_desktop.png") center center/cover
+      no-repeat;
+    max-width: 55%;
+    background-size: 60%;
+  }
+}

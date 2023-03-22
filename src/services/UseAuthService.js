@@ -4,13 +4,12 @@ import api_base from "./api_base";
 const UseAuthService = () => {
   const { request, result, loading, error } = useHttp();
 
-  const API_BASE = "https://identitytoolkit.googleapis.com/v1/accounts:";
-  const ACTION = "signInWithPassword?key=";
-  const API_KEY = "AIzaSyDmdsSeJ-OAW-XxCgHaPtXwqi5YYHH3gw4";
+  const API_AUTH = "https://identitytoolkit.googleapis.com/v1/accounts:";
+  const API_KEY = "AIzaSyDmdsSeJ-OAW-XxCgHaPtXwqi5YYHH3gw4"; // хз где хранить
 
   const onGetAuthWithEmail = async (body) => {
     const data = await request(
-      `${API_BASE}${ACTION}${API_KEY}`,
+      `${API_AUTH}signInWithPassword?key=${API_KEY}`,
       {
         ...body,
         returnSecureToken: true,
@@ -20,7 +19,7 @@ const UseAuthService = () => {
 
     if (data.data) {
       const idUser = data.data.localId;
-      localStorage.setItem("token", idUser);
+      localStorage.setItem("userId", idUser);
       localStorage.setItem("TokenForChangePassword", data.data.idToken);
     }
   };
@@ -38,16 +37,16 @@ const UseAuthService = () => {
     };
 
     const data = await request(
-      `${API_BASE}signUp?key=${API_KEY}`,
+      `${API_AUTH}signUp?key=${API_KEY}`,
       user,
       "post"
     );
 
     const userId = await data.data.localId;
 
-    localStorage.setItem("token", userId);
+    localStorage.setItem("userId", userId);
 
-    localStorage.setItem("TokenForChangePassword", data.data.idToken);
+    localStorage.setItem("TokenForChangePassword", data.data.idToken); // хз
 
     const response = await request(
       `${api_base}/users/${userId}/user_info.json`,
@@ -66,7 +65,7 @@ const UseAuthService = () => {
 
   const onRestorePasswordWithEmail = async (body) => {
     const response = await request(
-      `${API_BASE}sendOobCode?key=${API_KEY}`,
+      `${API_AUTH}sendOobCode?key=${API_KEY}`,
       {
         ...body,
         requestType: "PASSWORD_RESET",
@@ -78,7 +77,7 @@ const UseAuthService = () => {
   const onUpdatePassword = async (body) => {
     const idToken = localStorage.getItem("TokenForChangePassword");
     const response = await request(
-      `${API_BASE}update?key=${API_KEY}`,
+      `${API_AUTH}update?key=${API_KEY}`,
       {
         idToken,
         ...body,

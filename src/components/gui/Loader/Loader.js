@@ -1,7 +1,7 @@
 import "./Loader.scss";
-const Loader = () => {
+const Loader = ({ color }) => {
   return (
-    <div className="spinner-border ms-1" role="status">
+    <div className="spinner-border ms-1 text-danger" role="status">
       <span className="visually-hidden">Loading...</span>
     </div>
   );

@@ -1,14 +1,13 @@
-import Header from "../../../gui/Header/Header";
+import Header from "../../../gui/Headers/Header/Header.js";
 import Input from "../../../gui/Input/Input";
 import "./AddAddress.scss";
 import MainButton from "../../../gui/Button/MainButton/MainButton";
 import { useState } from "react";
-import UseProfileService from "../../../../services/UseProfileService";
-import success from "../../../../images/success_2.svg";
+import Alert from "../../../gui/Alert/Alert.js";
 
 const AddAddress = () => {
   const [inputState, setInputState] = useState({});
-  const { onAddNewAddress, loading, result } = UseProfileService();
+  const [result, setResult] = useState(false);
 
   const onHundlerInput = (value, name) => {
     setInputState((prev) => {
@@ -16,13 +15,15 @@ const AddAddress = () => {
     });
   };
 
-  const onRequest = () => {
-    onAddNewAddress(inputState);
+  const onAddAddress = () => {
+    setResult(true);
+    const prev = JSON.parse(localStorage.getItem("addresses")) || [];
+    localStorage.setItem("addresses", JSON.stringify([...prev, inputState]));
   };
 
   const style = {
     width: "100%",
-    height: "45px",
+    height: "38px",
   };
 
   return (
@@ -69,6 +70,7 @@ const AddAddress = () => {
                   settings={style}
                   type="number"
                   placeholder={"399770"}
+                  value={"399770"}
                 />
               </div>
             </div>
@@ -108,21 +110,12 @@ const AddAddress = () => {
             </div>
           </li>
         </ul>
-        <div onClick={onRequest}>
-          <MainButton loader={loading} text={"Добавить"} />
+        <div onClick={onAddAddress}>
+          <MainButton text={"Добавить"} />
         </div>
-        {result ? <Success /> : null}
+        {result ? <Alert text={"Адрес успешно добавлен"} /> : null}
       </div>
     </>
-  );
-};
-
-const Success = () => {
-  return (
-    <div className="address__add__success">
-      <img src={success} alt="" />
-      <div>Адрес успешно добавлен</div>
-    </div>
   );
 };
 

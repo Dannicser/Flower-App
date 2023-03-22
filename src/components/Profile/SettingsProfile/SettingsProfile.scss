@@ -1,13 +1,14 @@
 .setting__profile__wrapper {
   margin-top: 30px;
-  padding: 0px 20px;
+  padding: 0px 20px 85px 20px;
   .input__list {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     .input__item {
       //   width: 280px;
       .input__label {
         margin-bottom: 10px;
         font-weight: 500;
+        font-size: 12px;
       }
     }
   }
@@ -19,12 +20,14 @@
   border-bottom: 1px solid #e5e5e5;
   padding-bottom: 15px;
   font-weight: 500;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  font-size: 12px;
 }
 
 .sign__out {
   color: red;
   font-weight: 500;
+  font-size: 12px;
 }
 
 // @media (max-height: 700px) {

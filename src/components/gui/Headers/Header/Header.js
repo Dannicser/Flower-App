@@ -1,5 +1,5 @@
 import "./Header.scss";
-import back from "../../../images/back.svg";
+import back from "../../../../images/back.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Header = ({

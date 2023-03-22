@@ -1,9 +1,13 @@
-import HeaderLogo from "../components/gui/HeaderLogo/HeaderLogo";
+import { Routes, Route } from "react-router-dom";
+import SpecialOffer from "../components/Goods/SpecialOffers/SpecialOffers";
+import Search from "../components/Search/Search";
 
 const MainPage = () => {
   return (
     <>
-      <HeaderLogo />
+      <Routes>
+        <Route path="/" element={<SpecialOffer />} />
+      </Routes>
     </>
   );
 };

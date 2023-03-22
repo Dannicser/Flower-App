@@ -3,8 +3,9 @@ import "./Navbar.scss";
 import { navbar, basket, favorites, profile, search } from "./icons/index.js";
 
 const Navbar = () => {
-  const auth = localStorage.getItem("token");
-  const page = auth ? "/profile" : "profile/auth";
+  const auth = localStorage.getItem("userId");
+  const page = auth ? "/profile" : "/profile/auth";
+  // как это лучше было реализовать?
 
   return (
     <nav>

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import UseProfileService from "../../../services/UseProfileService";
-import Header from "../../gui/Header/Header";
+import Header from "../../gui/Headers/Header/Header.js";
 import Input from "../../gui/Input/Input";
 import { arrow } from "../MainProfile/icons";
 import { NavLink } from "react-router-dom";
 import "./SettingsProfile.scss";
+import Alert from "../../gui/Alert/Alert";
 
 const settingOnStyle = {
   height: "42px",
@@ -12,9 +13,12 @@ const settingOnStyle = {
 };
 
 const SettingsProfile = () => {
-  const { onChangeProfileSettings, onGetProfileSettings } = UseProfileService();
+  const { onChangeProfileSettings, onGetProfileSettings, error } =
+    UseProfileService();
 
   const [inputState, setInputState] = useState({});
+
+  const [notification, setNotification] = useState(false);
 
   useEffect(() => {
     onGetProfileSettings().then((data) => setInputState(data));
@@ -22,6 +26,7 @@ const SettingsProfile = () => {
 
   const onRequest = () => {
     onChangeProfileSettings(inputState);
+    setNotification(true);
   };
 
   const onHundlerInput = (value, name) => {
@@ -31,7 +36,7 @@ const SettingsProfile = () => {
   };
 
   const onLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
   };
 
   return (
@@ -77,7 +82,11 @@ const SettingsProfile = () => {
                 onHundlerInput={onHundlerInput}
                 type={"text"}
                 name={"user_birthday"}
-                placeholder={inputState.user_birthday}
+                placeholder={
+                  inputState.user_birthday
+                    ? inputState.user_birthday
+                    : "Ваш день рождения"
+                }
                 settings={settingOnStyle}
               />
             </li>
@@ -93,10 +102,14 @@ const SettingsProfile = () => {
           </div>
         </NavLink>
         <a href="/">
+          {/* перезагружаю тем самым меняю роуты в Navbar */}
           <div onClick={() => onLogout()} className="sign__out">
             Выйти из аккаунта
           </div>
         </a>
+        {notification && !error ? (
+          <Alert text={"Данные успешно изменены"} />
+        ) : null}
       </div>
     </>
   );

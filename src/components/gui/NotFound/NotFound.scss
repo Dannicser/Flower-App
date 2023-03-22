@@ -10,15 +10,21 @@
     padding: 0px 10px;
 
     .empty__img {
-      margin-bottom: 15px;
+      margin-bottom: 8px;
+
+      img {
+        max-width: 18%;
+      }
     }
     .empty__title {
       @include main_style_title;
-      margin-bottom: 10px;
+      margin-bottom: 2px;
+      font-size: 13px;
     }
     .empty__description {
       color: $main_color;
       line-height: 22px;
+      font-size: 12px;
     }
   }
 }

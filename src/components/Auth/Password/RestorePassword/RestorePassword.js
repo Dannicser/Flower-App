@@ -1,7 +1,7 @@
 import { useState } from "react";
 import UseAuthService from "../../../../services/UseAuthService";
 import MainButton from "../../../gui/Button/MainButton/MainButton";
-import Header from "../../../gui/Header/Header";
+import Header from "../../../gui/Headers/Header/Header";
 import Input from "../../../gui/Input/Input";
 import NotFound from "../../../gui/NotFound/NotFound";
 import success from "../../../../images/success_.png";
@@ -35,15 +35,13 @@ const RestorePassword = () => {
         />
         <div className="restore__title">
           Введите вашу электронную почту, чтобы мы могли отправить письмо для
-          восстановления пароля пароля
+          восстановления пароля
         </div>
       </div>
       <div onClick={onRequest}>
         <MainButton loader={loading} text={"Продолжить"} />
       </div>
-      <div className="error_message">
-        {error ? "Что-то пошло не так" : null}
-      </div>
+      {error ? <div className="error_message">Что-то пошло не так </div> : null}
     </>
   );
 };

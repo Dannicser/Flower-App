@@ -1,6 +1,6 @@
 import { useState } from "react";
 import UseAuthService from "../../../services/UseAuthService";
-import Header from "../../gui/Header/Header";
+import Header from "../../gui/Headers/Header/Header.js";
 import Input from "../../gui/Input/Input";
 import success from "../../../images/success_.png";
 import NoteFound from "../../gui/NotFound/NotFound";
@@ -42,71 +42,73 @@ const AuthCreateProfile = () => {
 
 const View = ({ onHundlerInput, onRequest, loading, error }) => {
   return (
-    <div className="auth__create__profile__wrapper">
+    <>
       <Header onRequest={onRequest} extension={true} title={"Новый профиль"} />
-      {loading ? (
-        <div className="auth__loader">
-          <Loader />
-        </div>
-      ) : (
-        <>
-          <ul className="auth__create__list">
-            <li className="auth__create__profile__item">
-              <div className="auth__item__title">Введите ваше имя</div>
-              <Input
-                name={"user_name"}
-                onHundlerInput={onHundlerInput}
-                placeholder={"Иван"}
-                settings={settingOnStyle}
-              />
-            </li>
-            <li className="auth__create__profile__item">
-              <div className="auth__item__title">
-                Введите ваш номер телефона
-              </div>
-              <Input
-                name={"user_phone"}
-                onHundlerInput={onHundlerInput}
-                placeholder={"8-800-555-35-35"}
-                settings={settingOnStyle}
-              />
-            </li>
-            <li className="auth__create__profile__item">
-              <div className="auth__item__title">Введите ваш email</div>
-              <Input
-                name={"user_email"}
-                type={"email"}
-                onHundlerInput={onHundlerInput}
-                placeholder={"email@mail.ru"}
-                settings={settingOnStyle}
-              />
-            </li>
-            <li className="auth__create__profile__item">
-              <div className="auth__item__title">Введите ваш пароль</div>
-              <Input
-                name={"user_password"}
-                type={"password"}
-                onHundlerInput={onHundlerInput}
-                placeholder={"***********"}
-                settings={settingOnStyle}
-              />
-            </li>
-            <li className="auth__create__profile__item">
-              <div className="auth__item__title">Повторите пароль</div>
-              <Input
-                name={"user_password"}
-                onHundlerInput={onHundlerInput}
-                placeholder={"***********"}
-                settings={settingOnStyle}
-              />
-            </li>
-          </ul>
-          {error ? (
-            <p className="error_message">Не удалось создать аккаунт</p>
-          ) : null}
-        </>
-      )}
-    </div>
+      <div className="auth__create__profile__wrapper">
+        {loading ? (
+          <div className="auth__loader">
+            <Loader />
+          </div>
+        ) : (
+          <>
+            <ul className="auth__create__list">
+              <li className="auth__create__profile__item">
+                <div className="auth__item__title">Введите ваше имя</div>
+                <Input
+                  name={"user_name"}
+                  onHundlerInput={onHundlerInput}
+                  placeholder={"Иван"}
+                  settings={settingOnStyle}
+                />
+              </li>
+              <li className="auth__create__profile__item">
+                <div className="auth__item__title">
+                  Введите ваш номер телефона
+                </div>
+                <Input
+                  name={"user_phone"}
+                  onHundlerInput={onHundlerInput}
+                  placeholder={"8-800-555-35-35"}
+                  settings={settingOnStyle}
+                />
+              </li>
+              <li className="auth__create__profile__item">
+                <div className="auth__item__title">Введите ваш email</div>
+                <Input
+                  name={"user_email"}
+                  type={"email"}
+                  onHundlerInput={onHundlerInput}
+                  placeholder={"email@mail.ru"}
+                  settings={settingOnStyle}
+                />
+              </li>
+              <li className="auth__create__profile__item">
+                <div className="auth__item__title">Введите ваш пароль</div>
+                <Input
+                  name={"user_password"}
+                  type={"password"}
+                  onHundlerInput={onHundlerInput}
+                  placeholder={"***********"}
+                  settings={settingOnStyle}
+                />
+              </li>
+              <li className="auth__create__profile__item">
+                <div className="auth__item__title">Повторите пароль</div>
+                <Input
+                  name={"user_password"}
+                  onHundlerInput={onHundlerInput}
+                  placeholder={"***********"}
+                  settings={settingOnStyle}
+                />
+              </li>
+            </ul>
+            {error ? (
+              <p className="error_message">Не удалось создать аккаунт</p>
+            ) : null}
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

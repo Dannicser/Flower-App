@@ -1,7 +1,6 @@
-import Header from "../../../gui/Header/Header";
+import Header from "../../../gui/Headers/Header/Header.js";
 import NotFound from "../../../gui/NotFound/NotFound";
 import nothing from "../../../../images/not__found_2.png";
-import UseProfileService from "../../../../services/UseProfileService";
 import remove from "../../../../images/delete_.svg";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -9,29 +8,28 @@ import "./MyAddress.scss";
 import MainButton from "../../../gui/Button/MainButton/MainButton";
 
 const MyAddresses = () => {
-  const { onGetAddresses, onDeleteAddress, loading } = UseProfileService();
-
   const [addresses, setAdrresses] = useState([]);
 
   useEffect(() => {
-    console.log("fetch");
-    onGetAddresses().then((data) => setAdrresses(data));
+    onGetAddresses();
   }, []);
 
-  const onRequest = (id) => {
-    onDeleteAddress(id);
-
-    setTimeout(() => {
-      onGetAddresses().then((data) => setAdrresses(data));
-    }, 800);
+  const onGetAddresses = () => {
+    const all = JSON.parse(localStorage.getItem("addresses")) || [];
+    setAdrresses(all);
   };
 
-  console.log(addresses);
+  const onDeleteAddress = (id) => {
+    const all = JSON.parse(localStorage.getItem("addresses")) || [];
+    all.splice(id, 1);
+    localStorage.setItem("addresses", JSON.stringify(all));
+    setAdrresses(all);
+  };
 
-  return <View onRequest={onRequest} addresses={addresses} />;
+  return <View onDeleteAddress={onDeleteAddress} addresses={addresses} />;
 };
 
-const View = ({ addresses, onRequest }) => {
+const View = ({ addresses, onDeleteAddress }) => {
   return (
     <>
       <Header title={"Мои адреса"} button={false} extension={true} />
@@ -42,7 +40,7 @@ const View = ({ addresses, onRequest }) => {
               <li key={i} className="address__item">
                 <div className="address__title">
                   <div className="text">{el.place_name}</div>
-                  <img onClick={() => onRequest(i)} src={remove} alt="" />
+                  <img onClick={() => onDeleteAddress(i)} src={remove} alt="" />
                 </div>
                 <div className="address__other__info">
                   <span>г.{el.city_name}</span>

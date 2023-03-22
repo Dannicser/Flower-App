@@ -1,4 +1,4 @@
-@import "../../../style/default_variables.scss";
+@import "../../../../style/default_variables.scss";
 
 .gui__header {
   display: flex;
@@ -6,7 +6,8 @@
   align-items: center;
   @include main_style_title;
   @include main_header;
-  padding: 10px;
+  padding-bottom: 6px;
+  padding-top: 8px;
 
   .gui__header__back {
     width: 40px;
@@ -14,11 +15,13 @@
   }
   .gui__header__button {
     color: rgba(207, 34, 93, 1);
-    font-size: 15px;
+    font-size: 12px;
     padding-right: 10px;
     padding-top: 2px;
   }
   .gui__header__title {
+    font-size: 14px;
+    font-weight: 500;
   }
   .center {
     display: flex;
@@ -26,6 +29,13 @@
     width: 100%;
   }
   .mr {
-    margin-right: 40px;
+    margin-right: 52px;
+  }
+  a {
+    padding-top: 5px;
+    img {
+      max-width: 45%;
+      padding: 1px;
+    }
   }
 }

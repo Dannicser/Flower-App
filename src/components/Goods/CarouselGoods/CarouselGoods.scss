@@ -1,0 +1,44 @@
+.wrapper__carousel {
+  padding: 0px 20px;
+  margin-top: 30px;
+
+  .carousel__list__gods {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    .carousel__item__goods:hover {
+      color: rgba(207, 34, 93, 1);
+    }
+
+    .carousel__item__goods {
+      text-align: center;
+      margin-right: 15px;
+
+      .title__carousel {
+        font-size: 12px;
+      }
+
+      .carousel__img {
+        width: 65px;
+        height: 55px;
+        img {
+          width: 60%;
+        }
+      }
+    }
+    .carousel__item__goods:last-child {
+      margin-right: 0;
+    }
+  }
+  .carousel__menu {
+    display: flex;
+    justify-content: space-between;
+    max-width: 300px;
+
+    margin: 0 auto;
+    .carouse__sub__header {
+      color: #797979;
+      font-weight: 500;
+    }
+  }
+}

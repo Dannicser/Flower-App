@@ -4,14 +4,16 @@
 
   .auth__bg {
     width: 100%;
-    background: url("../img/auth_rose.png") center center/cover no-repeat;
-    height: 320px;
+    background: url("../../../images/bg_test.svg") center center/cover no-repeat;
+    height: 25%;
+    margin-bottom: 90px;
   }
   .auth__enter__wrapper {
     height: 55%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 45px;
 
     .auth__enter__container {
       margin-bottom: 100px;
@@ -24,7 +26,7 @@
 
         .auth__title {
           color: rgba(26, 30, 38, 1);
-          font-size: 28px;
+          font-size: 22px;
           font-weight: 400;
           line-height: 34px;
           letter-spacing: 0em;
@@ -33,13 +35,13 @@
         }
 
         .auth__info {
-          font-size: 18px;
+          font-size: 13px;
           font-weight: 400;
           line-height: 24px;
           letter-spacing: 0px;
           text-align: center;
           color: rgba(162, 162, 162, 1);
-          margin-bottom: 40px;
+          margin-bottom: 20px;
         }
       }
     }
@@ -50,7 +52,7 @@
 
       .auth__btn {
         @include main_btn;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         text-align: center;
       }
 
@@ -64,7 +66,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 25px 0px;
+      margin: 10px 0px;
 
       .auth__line__text {
         font-size: 13px;
@@ -97,18 +99,25 @@
         align-items: center;
         margin-right: 20px;
 
+        .auth__title__icons {
+          font-size: 12px;
+        }
+
         .auth__bg__icon {
           position: relative;
-          width: 60px;
-          height: 60px;
+          width: 40px;
+          height: 40px;
           background-color: rgba(26, 30, 38, 0.05);
           border-radius: 60%;
           margin-bottom: 10px;
+          img {
+            width: 45%;
+          }
 
           .auth__icon {
             position: absolute;
-            right: 17px;
-            bottom: 18px;
+            right: 11px;
+            bottom: 11px;
           }
         }
       }
@@ -127,14 +136,17 @@
           flex-direction: column;
 
           .auth__info {
-            font-size: 15px;
+            font-size: 12px;
           }
         }
       }
 
       .auth__btn__container {
         .auth__btn {
-          width: 285px;
+          width: 260px;
+          height: 40px;
+          padding-top: 12px;
+          font-size: 14px;
         }
       }
     }

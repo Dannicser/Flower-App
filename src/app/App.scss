@@ -14,3 +14,13 @@
   font-weight: 500;
   margin-top: 10px;
 }
+.center_loader {
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media (min-width: 850px) {
+  .app__main__container {
+    display: none;
+  }
+}

@@ -1,4 +1,4 @@
-import Header from "../../gui/Header/Header";
+import Header from "../../gui/Headers/Header/Header.js";
 import "./AuthEnter.scss";
 import Input from "../../gui/Input/Input";
 import NoteFound from "../../gui/NotFound/NotFound";
@@ -36,7 +36,7 @@ const AuthEnterWithEmail = () => {
 
   return (
     <div className="main__enter__container">
-      <Header title={"Вход"} />
+      <Header button={false} extension={true} title={"Вход"} />
       {content}
     </div>
   );
@@ -51,18 +51,20 @@ const View = ({ onRequest, onHundlerInput, loading, error }) => {
           <div className="enter__by__phone">По номеру</div>
         </div>
       </div>
-      <Input
-        onHundlerInput={onHundlerInput}
-        name={"email"}
-        type={"email"}
-        placeholder={"mail@mail.ru"}
-      />
-      <Input
-        onHundlerInput={onHundlerInput}
-        name={"password"}
-        type={"password"}
-        placeholder={"*******"}
-      />
+      <form>
+        <Input
+          onHundlerInput={onHundlerInput}
+          name={"email"}
+          type={"email"}
+          placeholder={"mail@mail.ru"}
+        />
+        <Input
+          onHundlerInput={onHundlerInput}
+          name={"password"}
+          type={"password"}
+          placeholder={"*******"}
+        />
+      </form>
       <NavLink to={"/profile/auth/enter_with_email/forgot_password"}>
         <div className="enter__additional__function">
           <div className="enter__forgot__password">Забыли пароль?</div>

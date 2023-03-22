@@ -2,4 +2,80 @@
 
 .basket__wrapper {
   height: 100%;
+
+  .basket__list {
+    padding-bottom: 150px;
+    position: relative;
+    .order__button {
+      width: 100%;
+      position: fixed;
+      bottom: 25px;
+      border-top: 1px solid #dcdbdb;
+      padding-top: 5px;
+      background-color: white;
+      height: 100px;
+
+      .btn__gui__container {
+        .btn__gui {
+          height: 45px;
+          font-size: 14px;
+        }
+      }
+    }
+    .basket__count__container {
+      display: flex;
+      justify-content: center;
+
+      .basket__delete {
+        width: 30px;
+        height: 30px;
+        background-color: #dcdbdb;
+        border-radius: 60%;
+
+        img {
+          padding: 5px 6px;
+          display: block;
+        }
+      }
+
+      .basket__ui {
+        margin-right: 190px;
+        .count__interfase {
+          margin: 0 auto;
+          width: 90px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          border: 1px solid #ebebec;
+          padding: 0px 10px;
+          border-radius: 8px;
+
+          .subtract {
+            padding-top: 10px;
+          }
+          .add {
+            padding-top: 7px;
+          }
+          .count {
+            padding-top: 5px;
+          }
+        }
+      }
+    }
+  }
+  .basket__total {
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 19px;
+
+    .total__container {
+      width: 310px;
+    }
+    span {
+      font-weight: 600;
+      margin: 0px 3px;
+    }
+  }
 }

@@ -14,18 +14,19 @@ $gray: rgba(121, 121, 121, 1);
 
 @mixin second_btn {
   background-color: white;
-  color: $main_color;
+  color: #cf225d;
   border: 2px solid $main_color;
   text-align: center;
-  height: 48px;
-  width: 150px;
+  height: 40px;
+  width: 125px;
   border-radius: 10px;
-  padding: 14px 16px 10px 16px;
+  padding: 12px 16px 10px 16px;
   margin: 15px 0px;
+  font-size: 12px;
 }
 
 @mixin main_style_title {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 22px;
   letter-spacing: 0em;
@@ -35,7 +36,6 @@ $gray: rgba(121, 121, 121, 1);
 @mixin main_header {
   border-bottom: 1px solid rgba(26, 30, 38, 0.1);
   text-align: center;
-  padding-bottom: 10px;
-  margin-top: 5px;
+
   font-size: 18px;
 }

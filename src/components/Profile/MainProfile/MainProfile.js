@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import UseProfileService from "../../../services/UseProfileService";
-import Header from "../../gui/Header/Header";
+import Header from "../../gui/Headers/Header/Header.js";
 import Loader from "../../gui/Loader/Loader";
 
 import {
