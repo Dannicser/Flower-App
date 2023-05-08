@@ -14,8 +14,8 @@
     position: relative;
     img {
       display: block;
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       border-radius: 17px;
     }
     .goods__heart {
@@ -35,6 +35,7 @@
 
     .goods__title {
       line-height: 20px;
+      text-align: start;
       .span {
         @include main_style_title;
       }
@@ -44,6 +45,7 @@
       font-size: 12px;
       line-height: 17px;
       margin-bottom: 8px;
+      text-align: start;
     }
 
     .goods__price {
@@ -68,14 +70,21 @@
 @media (max-width: 350px) {
   .goods__card__wrapper {
     width: 320px;
+
+    .goods__img {
+      img {
+        height: 135px;
+        width: 135px;
+      }
+    }
     .goods__info {
       .goods__title {
         font-size: 14.3px;
-        line-height: 15px;
+        line-height: 17px;
       }
       .goods__composition {
         font-size: 12px;
-        line-height: 15px;
+        line-height: 17px;
         margin-bottom: 2px;
       }
       .goods__price {

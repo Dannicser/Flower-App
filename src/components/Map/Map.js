@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import MapHeader from "../gui/Headers/MapHeader/MapHeader.js";
 import remove from "./icons/remove.svg";
 import "./Map.scss";
@@ -28,25 +28,20 @@ const Map = () => {
 };
 
 const MapView = () => {
-  return (
-    <iframe src="https://yandex.ru/map-widget/v1/?ll=38.457725%2C52.629659&z=18.08"></iframe>
-  );
+  return <iframe src="https://yandex.ru/map-widget/v1/?ll=38.457713%2C52.629659&z=18.08"></iframe>;
 };
 
 const Info = () => {
   const [close, setClose] = useState(false);
 
   const onClose = () => {
-    console.log("click");
     setClose(true);
   };
 
   const content = close ? null : (
     <div className="geo__wrapper">
       <div className="geo__title">
-        <div className="text">
-          ул. Московское шоссе, 3А, Елец, Липецкая обл., 399783
-        </div>
+        <div className="text">ул. Московское шоссе, 3А, Елец, Липецкая обл., 399783</div>
         <div onClick={onClose} className="delete">
           <img src={remove} alt="" />
         </div>
@@ -67,9 +62,7 @@ const MapList = () => {
       <hr />
       <div style={style} className="geo__wrapper">
         <div className="geo__title">
-          <div className="text">
-            ул. Московское шоссе, 3А, Елец, Липецкая обл., 399783
-          </div>
+          <div className="text">ул. Московское шоссе, 3А, Елец, Липецкая обл., 399783</div>
         </div>
         <div className="geo__work">Круглосуточно</div>
         <div className="geo__phone">+7 (3812) 293-814</div>

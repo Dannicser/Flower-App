@@ -53,20 +53,14 @@ const GoodsInterfase = () => {
     if (toggle) {
       for (let item of goodsWish) {
         if (item.id !== id || goodsWish.length === 0) {
-          localStorage.setItem(
-            "wishlist",
-            JSON.stringify([...goodsWish, propsGoods])
-          );
+          localStorage.setItem("wishlist", JSON.stringify([...goodsWish, propsGoods]));
           setShowWish(true);
           break;
         }
       }
 
       if (goodsWish.length === 0) {
-        localStorage.setItem(
-          "wishlist",
-          JSON.stringify([...goodsWish, propsGoods])
-        );
+        localStorage.setItem("wishlist", JSON.stringify([...goodsWish, propsGoods]));
         setShowWish(true);
       }
     }
@@ -74,13 +68,7 @@ const GoodsInterfase = () => {
 
   return (
     <div>
-      <Header
-        extension={true}
-        title={`Авторский букет ${
-          loading ? "..." : "«" + propsGoods.title + "»"
-        }`}
-        button={false}
-      />
+      <Header extension={true} title={`Авторский букет ${loading ? "..." : "«" + propsGoods.title + "»"}`} button={false} />
       {loading ? (
         <div className="center_loader">
           <Loader />
@@ -103,10 +91,7 @@ const GoodsInterfase = () => {
             <div className="goods__text__interfase">
               Авторский букет <br />«{propsGoods.title}»
             </div>
-            <div
-              onClick={() => onToggleWishList(propsGoods.id)}
-              className="goods__wish__interfase"
-            >
+            <div onClick={() => onToggleWishList(propsGoods.id)} className="goods__wish__interfase">
               <img src={show ? heartActive : heartNoActive} alt="" />
             </div>
           </div>
@@ -133,7 +118,9 @@ const GoodsInterfase = () => {
               <div className="cost"> 550₽</div>
             </div>
           </div>
-          <Counter goods={propsGoods} />
+          <div className="container__counter">
+            <Counter goods={propsGoods} />
+          </div>
         </div>
       )}
     </div>

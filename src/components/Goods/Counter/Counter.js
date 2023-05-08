@@ -57,25 +57,16 @@ const Counter = ({ goods, full = false, onGetSum }) => {
 
     for (let item of prev) {
       if (item.id !== goods.id) {
-        localStorage.setItem(
-          "basket",
-          JSON.stringify([{ ...goods, count }, ...prev])
-        );
+        localStorage.setItem("basket", JSON.stringify([{ ...goods, count }, ...prev]));
       }
       if (item.id === goods.id) {
         prev.splice(prev.indexOf(item), 1);
-        localStorage.setItem(
-          "basket",
-          JSON.stringify([{ ...goods, count }, ...prev])
-        );
+        localStorage.setItem("basket", JSON.stringify([{ ...goods, count }, ...prev]));
       }
     }
 
     if (prev.length == 0) {
-      localStorage.setItem(
-        "basket",
-        JSON.stringify([{ ...goods, count }, ...prev])
-      );
+      localStorage.setItem("basket", JSON.stringify([{ ...goods, count }, ...prev]));
     }
   };
 
@@ -101,9 +92,7 @@ const Counter = ({ goods, full = false, onGetSum }) => {
             <img src={plus} alt="" />
           </div>
         </div>
-        {full ? null : (
-          <ButtonBasket onAddGoodsToBasket={onAddGoodsToBasket} cost={cost} />
-        )}
+        {full ? null : <ButtonBasket onAddGoodsToBasket={onAddGoodsToBasket} cost={cost} />}
       </div>
     </>
   );
@@ -111,7 +100,7 @@ const Counter = ({ goods, full = false, onGetSum }) => {
   return <>{content}</>;
 };
 
-const ButtonBasket = ({ cost, onAddGoodsToBasket }) => {
+const ButtonBasket = ({ cost = "...", onAddGoodsToBasket }) => {
   return (
     <NavLink to={"/basket"}>
       <div onClick={onAddGoodsToBasket}>

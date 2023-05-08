@@ -1,12 +1,11 @@
 import Header from "../../gui/Headers/Header/Header.js";
 import "./AuthEnter.scss";
-import Input from "../../gui/Input/Input";
-import NoteFound from "../../gui/NotFound/NotFound";
-import success from "../../../images/success_.png";
-import MainButton from "../../gui/Button/MainButton/MainButton";
-import { useState } from "react";
-import UseAuthService from "../../../services/UseAuthService";
-import { NavLink } from "react-router-dom";
+import Input from "../../gui/Input/Input.js";
+import MainButton from "../../gui/Button/MainButton/MainButton.js";
+import { useContext, useEffect, useState } from "react";
+import UseAuthService from "../../../services/UseAuthService.js";
+import { NavLink, Navigate } from "react-router-dom";
+import { AuthContext } from "../../context/authContext.js";
 
 const AuthEnterWithEmail = () => {
   const [inputState, setInputState] = useState({});
@@ -23,16 +22,7 @@ const AuthEnterWithEmail = () => {
     onGetAuthWithEmail(inputState);
   };
 
-  const content = result ? (
-    <Success />
-  ) : (
-    <View
-      onRequest={onRequest}
-      onHundlerInput={onHundlerInput}
-      loading={loading}
-      error={error}
-    />
-  );
+  const content = result ? <Success /> : <View onRequest={onRequest} onHundlerInput={onHundlerInput} loading={loading} error={error} />;
 
   return (
     <div className="main__enter__container">
@@ -52,35 +42,24 @@ const View = ({ onRequest, onHundlerInput, loading, error }) => {
         </div>
       </div>
       <form>
-        <Input
-          onHundlerInput={onHundlerInput}
-          name={"email"}
-          type={"email"}
-          placeholder={"mail@mail.ru"}
-        />
-        <Input
-          onHundlerInput={onHundlerInput}
-          name={"password"}
-          type={"password"}
-          placeholder={"*******"}
-        />
+        <Input onHundlerInput={onHundlerInput} name={"email"} type={"email"} placeholder={"mail@mail.ru"} />
+        <Input onHundlerInput={onHundlerInput} name={"password"} type={"password"} placeholder={"*******"} />
       </form>
-      <NavLink to={"/profile/auth/enter_with_email/forgot_password"}>
+      <NavLink to={"/auth/enter_with_email/forgot_password"}>
         <div className="enter__additional__function">
           <div className="enter__forgot__password">Забыли пароль?</div>
         </div>
       </NavLink>
       <div className="enter__agreement">
         <div className="agreement__text">
-          Продолжая, вы принимаете условия пользовательского <br /> соглашения и
-          политики конфиденциальности
+          Продолжая, вы принимаете условия пользовательского <br /> соглашения и политики конфиденциальности
         </div>
       </div>
       <div onClick={() => onRequest()}>
         <MainButton loader={loading} text={"Войти"} />
       </div>
       {error ? <p className="error_message"> Что-то пошло не так</p> : null}
-      <NavLink to={"/profile/create_profile"}>
+      <NavLink to={"/auth/create_profile"}>
         <div className="enter__create__profile">У меня нет аккаунта</div>
       </NavLink>
     </div>
@@ -88,16 +67,11 @@ const View = ({ onRequest, onHundlerInput, loading, error }) => {
 };
 
 const Success = () => {
-  return (
-    <NoteFound
-      img={success}
-      title={"Готово"}
-      descr={"Вы успешно пошли в аккаунт"}
-      button={true}
-      reload={true}
-      path="/profile"
-    />
-  );
+  const { isAuth } = useContext(AuthContext);
+
+  useEffect(() => isAuth(true), []);
+
+  return <Navigate to="/" />;
 };
 
 export default AuthEnterWithEmail;

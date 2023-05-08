@@ -1,0 +1,27 @@
+.carousel__wrapper {
+  h2 {
+    color: rgba(26, 30, 38, 1);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 10px 20px;
+  }
+
+  .carousel__container {
+    width: 100%;
+    display: flex;
+    overflow: scroll;
+    .slider__loader {
+      margin: 0 auto;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+  .carousel__container::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -8,8 +8,7 @@ import success from "../../../../images/success_.png";
 import "../UpdatePassword/UpdatePassword.scss";
 
 const RestorePassword = () => {
-  const { onRestorePasswordWithEmail, loading, error, result } =
-    UseAuthService();
+  const { onRestorePasswordWithEmail, loading, error, result } = UseAuthService();
 
   const [inputState, setInputState] = useState({});
 
@@ -27,16 +26,8 @@ const RestorePassword = () => {
     <>
       <Header button={false} extension={true} title={"Пароль"} />
       <div className="restore__container">
-        <Input
-          type="email"
-          onHundlerInput={onHundlerInput}
-          placeholder={"mail@mail.ru"}
-          name="email"
-        />
-        <div className="restore__title">
-          Введите вашу электронную почту, чтобы мы могли отправить письмо для
-          восстановления пароля
-        </div>
+        <Input type="email" onHundlerInput={onHundlerInput} placeholder={"mail@mail.ru"} name="email" />
+        <div className="restore__title">Введите вашу электронную почту, чтобы мы могли отправить письмо для восстановления пароля</div>
       </div>
       <div onClick={onRequest}>
         <MainButton loader={loading} text={"Продолжить"} />

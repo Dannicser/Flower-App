@@ -25,39 +25,24 @@ const PasswordUpdate = () => {
   ) : (
     <>
       <Header button={false} extension={true} title={"Пароль"} />
-      <div className="restore__container">
-        <Input
-          type="password"
-          onHundlerInput={onHundlerInput}
-          placeholder={"*******"}
-          name="password"
-        />
-        <div className="restore__title">
-          Пожалуйста, придумайте новый пароль
+      <form>
+        <div className="restore__container">
+          <Input type="password" onHundlerInput={onHundlerInput} placeholder={"*******"} name="password" />
+          <div className="restore__title">Пожалуйста, придумайте новый пароль</div>
         </div>
-      </div>
-      <div onClick={onRequest}>
-        <MainButton loader={loading} text={"Продолжить"} />
-      </div>
-      <div className="container">
-        <div className="error_message">
-          {error ? "Что-то пошло не так" : null}
+        <div onClick={onRequest}>
+          <MainButton loader={loading} text={"Продолжить"} />
         </div>
-      </div>
+        <div className="container">
+          <div className="error_message">{error ? "Что-то пошло не так" : null}</div>
+        </div>
+      </form>
     </>
   );
 };
 
 const SuccessUpdate = () => {
-  return (
-    <NotFound
-      title={"Ваш пароль был изменен"}
-      button={true}
-      textButton={"Профиль"}
-      path={"/profile"}
-      img={success}
-    />
-  );
+  return <NotFound title={"Ваш пароль был изменен"} button={true} textButton={"Профиль"} path={"/profile"} img={success} />;
 };
 
 export default PasswordUpdate;

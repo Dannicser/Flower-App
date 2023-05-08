@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UseProfileService from "../../../services/UseProfileService";
 import Header from "../../gui/Headers/Header/Header.js";
 import Input from "../../gui/Input/Input";
@@ -6,6 +6,7 @@ import { arrow } from "../MainProfile/icons";
 import { NavLink } from "react-router-dom";
 import "./SettingsProfile.scss";
 import Alert from "../../gui/Alert/Alert";
+import { AuthContext } from "../../context/authContext";
 
 const settingOnStyle = {
   height: "42px",
@@ -13,12 +14,13 @@ const settingOnStyle = {
 };
 
 const SettingsProfile = () => {
-  const { onChangeProfileSettings, onGetProfileSettings, error } =
-    UseProfileService();
+  const { onChangeProfileSettings, onGetProfileSettings, error } = UseProfileService();
 
   const [inputState, setInputState] = useState({});
 
   const [notification, setNotification] = useState(false);
+
+  const { isAuth } = useContext(AuthContext);
 
   useEffect(() => {
     onGetProfileSettings().then((data) => setInputState(data));
@@ -36,7 +38,10 @@ const SettingsProfile = () => {
   };
 
   const onLogout = () => {
+    isAuth(false);
+
     localStorage.removeItem("userId");
+    localStorage.removeItem("TokenForChangePassword");
   };
 
   return (
@@ -47,13 +52,7 @@ const SettingsProfile = () => {
           <ul className="input__list">
             <li className="input__item">
               <div className="input__label">Имя</div>
-              <Input
-                onHundlerInput={onHundlerInput}
-                name={"user_name"}
-                type={"text"}
-                placeholder={inputState.user_name}
-                settings={settingOnStyle}
-              />
+              <Input onHundlerInput={onHundlerInput} name={"user_name"} type={"text"} placeholder={inputState.user_name} settings={settingOnStyle} />
             </li>
             <li className="input__item">
               <div className="input__label">Телефон</div>
@@ -82,34 +81,24 @@ const SettingsProfile = () => {
                 onHundlerInput={onHundlerInput}
                 type={"text"}
                 name={"user_birthday"}
-                placeholder={
-                  inputState.user_birthday
-                    ? inputState.user_birthday
-                    : "Ваш день рождения"
-                }
+                placeholder={inputState.user_birthday ? inputState.user_birthday : "Ваш день рождения"}
                 settings={settingOnStyle}
               />
             </li>
           </ul>
         </div>
-        <NavLink
-          style={{ color: "black" }}
-          to={"/profile/settings/change_password"}
-        >
+        <NavLink style={{ color: "black" }} to={"/settings/change_password"}>
           <div className="change__password">
             <div className="text">Изменить пароль</div>
             <img src={arrow} alt="" />
           </div>
         </NavLink>
-        <a href="/">
-          {/* перезагружаю тем самым меняю роуты в Navbar */}
+        <NavLink to="/">
           <div onClick={() => onLogout()} className="sign__out">
             Выйти из аккаунта
           </div>
-        </a>
-        {notification && !error ? (
-          <Alert text={"Данные успешно изменены"} />
-        ) : null}
+        </NavLink>
+        {notification && !error ? <Alert text={"Данные успешно изменены"} /> : null}
       </div>
     </>
   );

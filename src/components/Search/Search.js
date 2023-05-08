@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import NotFound from "../gui/NotFound/NotFound";
 import nothing from "../../images/not_found.png";
 import remove from "../../images/delete_on_input.svg";
+import Loader from "../gui/Loader/Loader";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -26,15 +27,10 @@ const Search = () => {
   }, []);
 
   const onHundlerInput = (value) => {
-    setFilter(() => {
-      //можно ли так?
-      return allGoods.filter((el) =>
-        el.title.toLowerCase().includes(value.toLowerCase())
-      );
-    });
+    setFilter(allGoods.filter((el) => el.title.toLowerCase().includes(value.toLowerCase())));
   };
 
-  const content = filter.length ? (
+  const content = allGoods.length ? (
     <li className="search__list">
       {filter.map((el) => (
         <NavLink key={el.id} to={`/catalog/${el.type}/${el.id}`}>
@@ -46,12 +42,15 @@ const Search = () => {
       ))}
     </li>
   ) : (
-    <NotFound
-      descr={"Нам жаль, но мы ничего не смогли найти по вашему запросу"}
-      title={"Ничего не найдено"}
-      img={nothing}
-    />
+    <div className="search_loader">
+      <Loader />
+    </div>
   );
+
+  const empty =
+    !filter.length && allGoods.length ? (
+      <NotFound descr={"Нам жаль, но мы ничего не смогли найти по вашему запросу"} title={"Ничего не найдено"} img={nothing} />
+    ) : null;
 
   return (
     <div className="search__container">
@@ -63,6 +62,7 @@ const Search = () => {
       </div>
       <hr />
       {content}
+      {empty}
     </div>
   );
 };
@@ -70,12 +70,7 @@ const Search = () => {
 const InputSearch = ({ onHundlerInput }) => {
   return (
     <div className="search__input">
-      <Input
-        onHundlerInput={onHundlerInput}
-        name={"search"}
-        type={"text"}
-        placeholder={"Найти товар"}
-      />
+      <Input onHundlerInput={onHundlerInput} name={"search"} type={"text"} placeholder={"Найти товар"} />
       <img src={picture} alt="" />
       <img className="remove_value" src={remove} alt="" />
     </div>

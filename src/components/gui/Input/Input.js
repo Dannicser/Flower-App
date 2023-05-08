@@ -1,14 +1,6 @@
 import "./Input.scss";
 
-const Input = ({
-  placeholder,
-  type = "text",
-  settings = {},
-  name,
-  onHundlerInput,
-  disabled = false,
-  value,
-}) => {
+const Input = ({ placeholder, type = "text", settings = {}, name, onHundlerInput, disabled = false, value }) => {
   return (
     <div className="input__container">
       <input
@@ -20,6 +12,7 @@ const Input = ({
         className="input__gui"
         value={value}
         disabled={disabled}
+        autoComplete="on"
       />
     </div>
   );

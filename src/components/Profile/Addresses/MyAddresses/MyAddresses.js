@@ -1,6 +1,6 @@
 import Header from "../../../gui/Headers/Header/Header.js";
 import NotFound from "../../../gui/NotFound/NotFound";
-import nothing from "../../../../images/not__found_2.png";
+import notAdress from "../img/not_adress.png";
 import remove from "../../../../images/delete_.svg";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -71,7 +71,7 @@ const Empty = () => {
     <NotFound
       title={"У вас пока нет адресов"}
       descr={"Они появятся после выполненных заказов или добавьте их сейчас"}
-      img={nothing}
+      img={notAdress}
       button={true}
       textButton={"Добавить"}
       path="add_new_address"

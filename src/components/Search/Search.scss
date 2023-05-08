@@ -1,4 +1,8 @@
 .search__container {
+  .search_loader {
+    display: flex;
+    justify-content: center;
+  }
   .search__list {
     padding: 0px 25px 58px 25px;
     .search__item {

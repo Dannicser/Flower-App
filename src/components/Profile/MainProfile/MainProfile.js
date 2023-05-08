@@ -4,27 +4,18 @@ import UseProfileService from "../../../services/UseProfileService";
 import Header from "../../gui/Headers/Header/Header.js";
 import Loader from "../../gui/Loader/Loader";
 
-import {
-  settings,
-  box,
-  arrow,
-  aboutApp,
-  currency,
-  map,
-  notifications,
-  order,
-  lunguage,
-  documents,
-} from "./icons/index";
+import { settings, box, arrow, aboutApp, currency, map, notifications, order, lunguage, documents } from "./icons/index";
 import "./MainProfile.scss";
 
 const MainProfile = () => {
   const { onGetProfileSettings, loading } = UseProfileService();
 
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({ user_name: "...", user_phone: "..." });
 
   useEffect(() => {
-    onGetProfileSettings().then((data) => setUserInfo(data));
+    onGetProfileSettings().then((data) => {
+      if (data) setUserInfo(data);
+    });
   }, []);
 
   const content = (
@@ -48,7 +39,7 @@ const MainProfile = () => {
         </div>
         <ul className="profile__functions__list">
           <li className="profile__item__function">
-            <NavLink>
+            <NavLink to={"/orders"}>
               <div className="profile__title">
                 <img src={order} alt="" />
                 <div className="profile__text">Мои заказы</div>

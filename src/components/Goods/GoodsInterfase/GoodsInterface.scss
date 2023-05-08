@@ -1,6 +1,17 @@
 @import "../../../style/default_variables.scss";
 .goods__wrapper__interfase {
-  padding: 0px 25px 80px 25px;
+  padding: 0px 25px 100px 25px;
+
+  .container__counter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    position: fixed;
+    bottom: 70px;
+    padding-top: 5px;
+    // border-top: 1px solid #ebebec;
+  }
   .goods__bg__interfase {
     padding: 50px 50px;
     img {
@@ -147,12 +158,10 @@
 @media (max-width: 450px) {
   .goods__wrapper__interfase {
     .basket__ui {
-      display: flex;
-      justify-content: space-between;
       .btn__gui__container {
         padding: 0 10px;
         .btn__gui {
-          width: 200px;
+          width: 210px;
           font-size: 14px;
           height: 40px;
           padding-top: 12px;
@@ -160,9 +169,32 @@
       }
 
       .count__interfase {
-        width: 110px;
+        width: 120px;
         height: 40px;
         padding: 0px 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 390px) {
+  .goods__wrapper__interfase {
+    .basket__ui {
+      .btn__gui__container {
+        padding: 0 5px;
+        .btn__gui {
+          width: 185px;
+          font-size: 12px;
+          height: 36px;
+          padding-top: 11px;
+        }
+      }
+
+      .count__interfase {
+        width: 90px;
+        height: 35px;
+        padding: 0px 5px;
+        margin-right: 12px;
       }
     }
   }
@@ -171,22 +203,14 @@
 @media (max-width: 350px) {
   .goods__wrapper__interfase {
     .basket__ui {
-      display: flex;
-      justify-content: space-between;
       .btn__gui__container {
-        padding: 0 5px;
         .btn__gui {
-          width: 170px;
-          font-size: 12px;
-          height: 36px;
-          padding-top: 11px;
+          width: 175px;
         }
       }
 
       .count__interfase {
         width: 80px;
-        height: 35px;
-        padding: 0px 5px;
       }
     }
   }

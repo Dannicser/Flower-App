@@ -5,7 +5,7 @@ const UseAuthService = () => {
   const { request, result, loading, error } = useHttp();
 
   const API_AUTH = "https://identitytoolkit.googleapis.com/v1/accounts:";
-  const API_KEY = "AIzaSyDmdsSeJ-OAW-XxCgHaPtXwqi5YYHH3gw4"; // хз где хранить
+  const API_KEY = "AIzaSyDmdsSeJ-OAW-XxCgHaPtXwqi5YYHH3gw4";
 
   const onGetAuthWithEmail = async (body) => {
     const data = await request(
@@ -24,43 +24,25 @@ const UseAuthService = () => {
     }
   };
 
-  const onCreateProfile = async ({
-    user_email,
-    user_password,
-    user_phone,
-    user_name,
-  }) => {
+  const onCreateProfile = async ({ user_email, user_password, user_phone, user_name }) => {
     let user = {
       email: user_email,
       password: user_password,
       returnSecureToken: true,
     };
 
-    const data = await request(
-      `${API_AUTH}signUp?key=${API_KEY}`,
-      user,
-      "post"
-    );
+    const data = await request(`${API_AUTH}signUp?key=${API_KEY}`, user, "post");
 
     const userId = await data.data.localId;
 
-    localStorage.setItem("userId", userId);
-
-    localStorage.setItem("TokenForChangePassword", data.data.idToken); // хз
-
-    const response = await request(
-      `${api_base}/users/${userId}/user_info.json`,
-      user,
-      "post"
-    );
-
     user = { user_email, user_phone, user_name };
 
-    const put = await request(
-      `${api_base}/users/${userId}/user_info.json`,
-      user,
-      "put"
-    ); // так фикшу баг
+    const response = await request(`${api_base}/users/${userId}/user_info.json`, user, "post");
+
+    const put = await request(`${api_base}/users/${userId}/user_info.json`, user, "put"); // так фикшу баг хеша
+
+    localStorage.setItem("userId", userId);
+    localStorage.setItem("TokenForChangePassword", data.data.idToken);
   };
 
   const onRestorePasswordWithEmail = async (body) => {

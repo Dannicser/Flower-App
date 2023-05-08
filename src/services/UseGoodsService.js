@@ -9,7 +9,6 @@ const UseGoodsService = () => {
     if (response != null) {
       const array = [];
 
-      //выносить ли это ?
       for (let key in response.data) {
         array.push(...Object.values(response.data[key]));
       }
@@ -39,10 +38,32 @@ const UseGoodsService = () => {
     return {};
   };
 
+  const onGetPopularGoods = async () => {
+    const response = await request(`${api_base}/popular/.json`);
+
+    if (response != null) {
+      return Object.values(response.data);
+    }
+
+    return {};
+  };
+
+  const onGetDiscountGoods = async () => {
+    const response = await request(`${api_base}/discount/.json`);
+
+    if (response != null) {
+      return Object.values(response.data);
+    }
+
+    return {};
+  };
+
   return {
     onGetAllGoods,
     onGetGoodsByType,
     onGetGoodsById,
+    onGetPopularGoods,
+    onGetDiscountGoods,
     loading,
   };
 };

@@ -1,7 +1,7 @@
 import "./Basket.scss";
 import Header from "../gui/Headers/Header/Header.js";
 import NotFound from "../gui/NotFound/NotFound";
-import bag from "./img/basket_empty.png";
+import bag from "./img/basket_empty.svg";
 import { useEffect, useState } from "react";
 import GoodsCard from "../Goods/GoodsCard/GoodsCard";
 import MainButton from "../gui/Button/MainButton/MainButton";
@@ -89,11 +89,7 @@ const Basket = () => {
   return (
     <div className="basket__wrapper">
       <Header title={"Корзина"} />
-      {goods.length ? (
-        content
-      ) : (
-        <NotFound img={bag} title={title} descr={descr} />
-      )}
+      {goods.length ? content : <NotFound img={bag} title={title} descr={descr} />}
     </div>
   );
 };

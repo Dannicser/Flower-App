@@ -16,7 +16,7 @@ const AuthMain = () => {
           </div>
           <div className="auth__btn__container">
             <div className="auth__btn">По номеру телефона</div>
-            <NavLink to={"/profile/auth/enter_with_email"}>
+            <NavLink to={"/auth/enter_with_email"}>
               <div className="auth__btn auth__white__btn">
                 По электронной почте
               </div>

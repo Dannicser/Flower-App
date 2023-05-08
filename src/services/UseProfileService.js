@@ -7,19 +7,17 @@ const UseProfileService = () => {
   const { request, result, loading, error } = useHttp();
 
   const onChangeProfileSettings = async (user) => {
-    const response = await request(
-      `${api_base}/users/${userId}/user_info.json`,
-      user,
-      "put"
-    );
+    const response = await request(`${api_base}/users/${userId}/user_info.json`, user, "put");
   };
 
   const onGetProfileSettings = async () => {
-    const response = await request(
-      `${api_base}/users/${userId}/user_info.json`
-    );
+    const response = await request(`${api_base}/users/${userId}/user_info.json`);
 
-    return response.data;
+    if (response != null) {
+      return response.data;
+    }
+
+    return {};
   };
 
   return {
