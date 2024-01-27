@@ -2,7 +2,7 @@
 
 ## Deploy - https://flower-app-37af2.web.app
 
-## Hosting: https://flower-app-37af2.web.app/catalog
+
 
 
 ## Available Scripts
