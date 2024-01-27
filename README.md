@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Deploy - https://flower-app-37af2.web.app
 
 ## Hosting: https://flower-app-37af2.web.app/catalog
 
