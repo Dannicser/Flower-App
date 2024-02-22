@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 import GoodsCard from "../Goods/GoodsCard/GoodsCard";
 import MainButton from "../gui/Button/MainButton/MainButton";
 
-const title = "Ой, пусто";
-const descr = `Ваша корзина пуста, откройте «Каталог» и выберите понравившийся товар`;
+const title = "Empty basket";
+const descr = `Buy for pleasure!`;
 
 const Basket = () => {
   const [goods, setGoods] = useState([]);
@@ -76,8 +76,8 @@ const Basket = () => {
     <>
       <div className="basket__total">
         <div className="total__container">
-          <span>{amount}</span> товар(-a) на
-          <span> {sum} ₽</span>
+          <span>{amount}</span> goods for
+          <span> {sum} $</span>
         </div>
       </div>
       <div className="basket__list">
@@ -100,7 +100,7 @@ const Basket = () => {
           );
         })}
         <div onClick={onOpenModal} className="order__button">
-          <MainButton text={`Оформить заказ на ${sum}$`} />
+          <MainButton text={`Make order for ${sum}$`} />
         </div>
       </div>
     </>
@@ -108,7 +108,7 @@ const Basket = () => {
 
   return (
     <div className="basket__wrapper">
-      <Header title={"Корзина"} />
+      <Header title={"Basket"} />
       {isModal && (
         <Modal footer={false} title="Payment" open={isModal} onOk={handleOk} onCancel={handleCancel}>
           {/*  */}

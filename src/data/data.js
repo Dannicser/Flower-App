@@ -5,6 +5,7 @@ export const goods_data_from_server = [
         name: "goods 1",
         price: 1001,
         id: 1,
+        img: "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
       },
       {
         name: "goods 11",

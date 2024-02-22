@@ -109,7 +109,7 @@ const ButtonBasket = ({ cost = "...", onAddGoodsToBasket }) => {
   return (
     <NavLink to={"/basket"}>
       <div onClick={onAddGoodsToBasket}>
-        <Button text={`В корзину за ${cost}₽`} />
+        <Button text={`Add to basket for ${cost}₽`} />
       </div>
     </NavLink>
   );
