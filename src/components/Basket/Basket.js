@@ -87,7 +87,7 @@ const Basket = () => {
               <GoodsCard
                 type={el.type}
                 composition={el.composition}
-                title={el.title}
+                title={el.name}
                 img={el.img}
                 price={el.price}
                 id={el.id}

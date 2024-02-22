@@ -3,16 +3,16 @@ export const goods_data_from_server = [
     items: [
       {
         name: "goods 1",
-        price: "100",
+        price: 1001,
         id: 1,
       },
       {
-        name: "goods 1",
+        name: "goods 11",
         price: 100,
         id: 2,
       },
       {
-        name: "goods 1",
+        name: "goods 11",
         price: 100,
         id: 3,
       },
