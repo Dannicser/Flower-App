@@ -6,6 +6,7 @@ import bag from "./img/basket_empty.svg";
 import { useEffect, useState } from "react";
 import GoodsCard from "../Goods/GoodsCard/GoodsCard";
 import MainButton from "../gui/Button/MainButton/MainButton";
+import axios from "axios";
 
 const title = "Empty basket";
 const descr = `Buy for pleasure!`;
@@ -22,7 +23,14 @@ const Basket = () => {
     setIsModal(true);
   }
 
-  function onPay() {
+  async function onPay() {
+    try {
+      const res = await axios.post("http://37.1.213.208:8098/process_payment", form.getFieldsValue());
+
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
     console.log("pay", form.getFieldsValue(), goods, { sum });
   }
 

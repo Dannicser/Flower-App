@@ -34,7 +34,7 @@ const GoodsCard = ({ img, title, composition, price, id, type, basket = false, g
             </div>
             <div className="goods__composition">{composition}</div>
             <div className="goods__price">
-              <SecondButton text={price + "₽"} />
+              <SecondButton text={price + "$"} />
             </div>
           </div>
         </div>
