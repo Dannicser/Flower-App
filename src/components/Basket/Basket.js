@@ -1,4 +1,5 @@
 import "./Basket.scss";
+import { Button, Form, Input, Modal } from "antd";
 import Header from "../gui/Headers/Header/Header.js";
 import NotFound from "../gui/NotFound/NotFound";
 import bag from "./img/basket_empty.svg";
@@ -13,6 +14,17 @@ const Basket = () => {
   const [goods, setGoods] = useState([]);
   const [sum, setTotalSum] = useState(0);
   const [amount, setAmount] = useState(0);
+  const [isModal, setIsModal] = useState(false);
+
+  const [form] = Form.useForm();
+
+  function onOpenModal() {
+    setIsModal(true);
+  }
+
+  function onPay() {
+    console.log("pay", form.getFieldsValue(), goods, { sum });
+  }
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("basket")) || [];
@@ -52,6 +64,14 @@ const Basket = () => {
     onGetSum();
   };
 
+  const handleOk = () => {
+    setIsModal(false);
+  };
+
+  const handleCancel = () => {
+    setIsModal(false);
+  };
+
   const content = (
     <>
       <div className="basket__total">
@@ -79,8 +99,8 @@ const Basket = () => {
             </li>
           );
         })}
-        <div className="order__button">
-          <MainButton text={`Оформить заказ на ${sum}₽`} />
+        <div onClick={onOpenModal} className="order__button">
+          <MainButton text={`Оформить заказ на ${sum}$`} />
         </div>
       </div>
     </>
@@ -89,6 +109,180 @@ const Basket = () => {
   return (
     <div className="basket__wrapper">
       <Header title={"Корзина"} />
+      {isModal && (
+        <Modal footer={false} title="Payment" open={isModal} onOk={handleOk} onCancel={handleCancel}>
+          {/*  */}
+          <Form onFinish={onPay} form={form}>
+            <Form.Item
+              label="Firstname"
+              name="first_name"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your firstName!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Lastname"
+              name="last_name"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your lastName!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Company"
+              name="company"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your company!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Address"
+              name="address"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your address!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="City"
+              name="city"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your city!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="State"
+              name="state"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your state!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Zip"
+              name="zip_code"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input zip address!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Country"
+              name="country"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your country!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Card number"
+              name="card_number"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your card!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Expiration date"
+              name="expiration_date"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input expiration date card!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Cvv"
+              name="cvv"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your cvv card!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Card"
+              name="card"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your card!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              wrapperCol={{
+                offset: 8,
+                span: 16,
+              }}
+            >
+              <Button onSubmit={onPay} type="primary" htmlType="submit">
+                Pay
+              </Button>
+            </Form.Item>
+
+            {/*  */}
+          </Form>
+        </Modal>
+      )}
       {goods.length ? content : <NotFound img={bag} title={title} descr={descr} />}
     </div>
   );

@@ -6,7 +6,7 @@ nav {
   flex-grow: 0; //
   padding: 0;
   width: 100%;
-  z-index: 12123;
+  z-index: 11;
   background-color: white;
   hr {
     margin-top: 0px;
@@ -15,7 +15,7 @@ nav {
   bottom: 0;
   .nav__wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
     .nav__item {
       display: flex;

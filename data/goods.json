@@ -1,0 +1,41 @@
+[
+  {
+    "items": [
+      {
+        "name": "goods 1",
+        "price": 100
+      }
+    ],
+    "address": {
+      "street": "string",
+      "city": "string",
+      "zip_code": "string"
+    }
+  },
+  {
+    "items": [
+      {
+        "name": "goods 2",
+        "price": 300
+      }
+    ],
+    "address": {
+      "street": "string",
+      "city": "string",
+      "zip_code": "string"
+    }
+  },
+  {
+    "items": [
+      {
+        "name": "goods 3",
+        "price": 1020
+      }
+    ],
+    "address": {
+      "street": "string",
+      "city": "string",
+      "zip_code": "string"
+    }
+  }
+]

@@ -5,6 +5,35 @@ import GoodsCard from "../GoodsCard/GoodsCard";
 import Loader from "../../gui/Loader/Loader.js";
 import HeaderLogo from "../../../components/gui/HeaderLogo/HeaderLogo";
 import "./GoodsList.scss";
+import axios from "axios";
+
+const goods_data_from_server = [
+  {
+    items: [
+      {
+        name: "goods 1",
+        price: 100,
+      },
+      {
+        name: "goods 1",
+        price: 100,
+      },
+      {
+        name: "goods 1",
+        price: 100,
+      },
+      {
+        name: "goods 1",
+        price: 100,
+      },
+    ],
+    address: {
+      street: "string",
+      city: "string",
+      zip_code: "string",
+    },
+  },
+];
 
 const GoodsList = () => {
   const [goods, setGoods] = useState([]);
@@ -12,12 +41,20 @@ const GoodsList = () => {
   const { onGetGoodsByType, loading } = UseGoodsService();
 
   useEffect(() => {
-    onGetGoodsByType("classic").then((data) => setGoods(data));
+    onGetGoods();
   }, []);
 
-  const onChooseTypeGoods = (type) => {
-    onRequest(type);
+  const onGetGoods = async () => {
+    try {
+      //тут запрос на получении товаров
+
+      // const response = await axios.get("");
+
+      setGoods(goods_data_from_server[0].items);
+    } catch (error) {}
   };
+
+  console.log(goods);
 
   const onRequest = (type) => {
     onGetGoodsByType(type).then((data) => setGoods(data));
@@ -34,7 +71,7 @@ const GoodsList = () => {
   return (
     <>
       <HeaderLogo />
-      <CarouselGoods onChooseTypeGoods={onChooseTypeGoods} />
+      {/* <CarouselGoods onChooseTypeGoods={onChooseTypeGoods} /> */}
       {content}
     </>
   );
@@ -42,23 +79,17 @@ const GoodsList = () => {
 
 const List = ({ goods }) => {
   return (
-    <ul className="goods__list">
-      {goods.map((el) => {
-        return (
-          <li key={el.id}>
-            <GoodsCard
-              title={el.title}
-              img={el.img}
-              price={el.price}
-              descr={el.descr}
-              id={el.id}
-              composition={el.composition}
-              type={el.type}
-            />
-          </li>
-        );
-      })}
-    </ul>
+    <div className="goods_wrapper">
+      <ul className="goods__list">
+        {goods.map((el, i) => {
+          return (
+            <li key={el.id}>
+              <GoodsCard title={el.name} img={""} price={el.price} descr={""} id={i} composition={""} type={""} />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 

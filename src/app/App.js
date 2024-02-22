@@ -12,14 +12,15 @@ function App() {
   return (
     <div className="app__main__container">
       <BrowserRouter>
+        {" "}
         <Routes>
-          <Route element={<MainPage />} path="/main" />
+          {/* <Route element={<MainPage />} path="/main" /> */}
           <Route element={<CatalogPage />} path="/catalog/*" />
           <Route element={<BasketPage />} path="/basket" />
           <Route element={<WishListPage />} path="/wishlist" />
-          <Route element={<HomePage />} path="/*" />
+          {/* <Route element={<HomePage />} path="/*" /> */}
           <Route element={<Page404 />} path="*" />
-        </Routes>
+        </Routes>{" "}
         <Navbar />
       </BrowserRouter>
     </div>

@@ -15,6 +15,7 @@ const GoodsInterfase = () => {
   const [show, setShowWish] = useState(false);
 
   useEffect(() => {
+    // тут надо сделаьть запрос на получение товара по id
     onGetGoodsById(type, id_goods).then((data) => {
       setPropertiesGoods(data);
     });
@@ -89,34 +90,12 @@ const GoodsInterfase = () => {
           </div>
           <div className="goods__title__interfase">
             <div className="goods__text__interfase">
-              Авторский букет <br />«{propsGoods.title}»
-            </div>
-            <div onClick={() => onToggleWishList(propsGoods.id)} className="goods__wish__interfase">
-              <img src={show ? heartActive : heartNoActive} alt="" />
+              <br />«{propsGoods.title}»
             </div>
           </div>
           <div className="goods__descr__interfase">{propsGoods.descr}</div>
           <div className="goods__props__interfase">
-            <div className="title__interfase">Характеристики:</div>
             <hr />
-            <div className="color__interfase">
-              <div className="sub__header__interfase">Цвет:</div>
-              <div className="props__intefase">{propsGoods.color}</div>
-            </div>
-            <div className="count__interfase">
-              <div className="sub__header__interfase">Состав букета:</div>
-              <div className="props__intefase">{propsGoods.count}</div>
-            </div>
-            <div className="deliver__interfase">Доставка по Ельцу</div>
-            <hr />
-            <div className="deliver__time">
-              <div className="time"> c 8:00 до 21:00 </div>
-              <div className="cost"> 350₽</div>
-            </div>
-            <div className="deliver__time">
-              <div className="time">c 21:00 до 8:00 </div>
-              <div className="cost"> 550₽</div>
-            </div>
           </div>
           <div className="container__counter">
             <Counter goods={propsGoods} />

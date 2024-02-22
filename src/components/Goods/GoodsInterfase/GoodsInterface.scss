@@ -1,6 +1,8 @@
 @import "../../../style/default_variables.scss";
 .goods__wrapper__interfase {
-  padding: 0px 25px 100px 25px;
+  padding: 0px 100px 100px 100px;
+
+  text-align: center;
 
   .container__counter {
     width: 100%;
@@ -15,9 +17,9 @@
   .goods__bg__interfase {
     padding: 50px 50px;
     img {
-      display: block;
-      height: 100%;
-      width: 100%;
+      text-align: center;
+      height: 30%;
+      width: 30%;
       border-radius: 20px;
     }
   }
@@ -39,7 +41,7 @@
 
   .goods__title__interfase {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 15px;
     .goods__text__interfase {
       font-size: 22px;
@@ -122,6 +124,7 @@
     justify-content: space-between;
 
     .count__interfase {
+      cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
