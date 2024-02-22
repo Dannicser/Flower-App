@@ -264,19 +264,6 @@ const Basket = () => {
             </Form.Item>
 
             <Form.Item
-              label="Card"
-              name="card"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your card!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-
-            <Form.Item
               wrapperCol={{
                 offset: 8,
                 span: 16,
