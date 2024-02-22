@@ -57,7 +57,7 @@ const List = ({ goods }) => {
         {goods.map((el, i) => {
           return (
             <li key={el.id}>
-              <GoodsCard title={el.name} img={""} price={el.price} descr={""} id={el.id} composition={""} type={""} />
+              <GoodsCard title={el.name} img={el.img} price={el.price} descr={""} id={el.id} composition={""} type={""} />
             </li>
           );
         })}
