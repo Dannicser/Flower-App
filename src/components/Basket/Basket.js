@@ -1,5 +1,5 @@
 import "./Basket.scss";
-import { Button, Form, Input, Modal } from "antd";
+import { Alert, Button, Form, Input, Modal } from "antd";
 import Header from "../gui/Headers/Header/Header.js";
 import NotFound from "../gui/NotFound/NotFound";
 import bag from "./img/basket_empty.svg";
@@ -16,6 +16,7 @@ const Basket = () => {
   const [sum, setTotalSum] = useState(0);
   const [amount, setAmount] = useState(0);
   const [isModal, setIsModal] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const [form] = Form.useForm();
 
@@ -25,13 +26,22 @@ const Basket = () => {
 
   async function onPay() {
     try {
-      const res = await axios.post("http://37.1.213.208:8098/process_payment", { ...form.getFieldsValue(), price: sum.toString() });
+      const res = await axios.post("http://37.1.213.208:8098/process_payment", {
+        ...form.getFieldsValue(),
+        price: sum.toString(),
+      });
+
+      setGoods([]);
+      localStorage.removeItem("basket");
+
+      setIsModal(false);
 
       console.log(res);
     } catch (error) {
+      setIsError(true);
+
       console.log(error);
     }
-    // console.log("pay", form.getFieldsValue(), goods, { sum });
   }
 
   useEffect(() => {
@@ -273,6 +283,8 @@ const Basket = () => {
                 Pay
               </Button>
             </Form.Item>
+
+            {isError && <Alert message="Error" description="Something went wrong" type="error" showIcon />}
 
             {/*  */}
           </Form>
