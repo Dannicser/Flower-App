@@ -16,6 +16,7 @@ const GoodsInterfase = () => {
 
   useEffect(() => {
     // тут надо сделаьть запрос на получение товара по id
+
     onGetGoodsById(type, id_goods).then((data) => {
       setPropertiesGoods(data);
     });
