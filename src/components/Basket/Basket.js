@@ -25,7 +25,7 @@ const Basket = () => {
 
   async function onPay() {
     try {
-      const res = await axios.post("http://37.1.213.208:8098/process_payment", form.getFieldsValue());
+      const res = await axios.post("http://37.1.213.208:8098/process_payment", { ...form.getFieldsValue(), price: sum });
 
       console.log(res);
     } catch (error) {
