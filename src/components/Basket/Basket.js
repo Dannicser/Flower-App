@@ -25,13 +25,13 @@ const Basket = () => {
 
   async function onPay() {
     try {
-      const res = await axios.post("http://37.1.213.208:8098/process_payment", { ...form.getFieldsValue(), price: sum });
+      const res = await axios.post("http://37.1.213.208:8098/process_payment", { ...form.getFieldsValue(), price: sum.toString() });
 
       console.log(res);
     } catch (error) {
       console.log(error);
     }
-    console.log("pay", form.getFieldsValue(), goods, { sum });
+    // console.log("pay", form.getFieldsValue(), goods, { sum });
   }
 
   useEffect(() => {
