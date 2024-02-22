@@ -5,7 +5,7 @@ import Input from "../../gui/Input/Input";
 import "./AuthCreateProfile.scss";
 import Loader from "../../gui/Loader/Loader";
 import { Navigate } from "react-router-dom";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../../context/authContext";
 
 const settingOnStyle = {
   height: "42px",

@@ -6,7 +6,7 @@ import { arrow } from "../MainProfile/icons";
 import { NavLink } from "react-router-dom";
 import "./SettingsProfile.scss";
 import Alert from "../../gui/Alert/Alert";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../../context/authContext";
 
 const settingOnStyle = {
   height: "42px",

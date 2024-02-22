@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { publicRoutes, privetRoutes } from "../Routers/AppRouter";
-import { AuthContext } from "../components/context/authContext";
+import { AuthContext } from "../context/authContext";
 import { useEffect, useLayoutEffect, useState } from "react";
 
 const HomePage = () => {

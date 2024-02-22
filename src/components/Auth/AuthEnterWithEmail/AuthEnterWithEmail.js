@@ -5,7 +5,7 @@ import MainButton from "../../gui/Button/MainButton/MainButton.js";
 import { useContext, useEffect, useState } from "react";
 import UseAuthService from "../../../services/UseAuthService.js";
 import { NavLink, Navigate } from "react-router-dom";
-import { AuthContext } from "../../context/authContext.js";
+import { AuthContext } from "../../../context/authContext.js";
 
 const AuthEnterWithEmail = () => {
   const [inputState, setInputState] = useState({});
