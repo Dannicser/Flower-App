@@ -6,7 +6,12 @@ import subtract from "./img/subtract.svg";
 
 const Counter = ({ goods, full = false, onGetSum }) => {
   const [count, setCount] = useState(1);
-  const [cost, setCost] = useState(goods.price);
+
+  const [cost, setCost] = useState();
+
+  useEffect(() => {
+    setCost(goods.price);
+  }, [goods]);
 
   useEffect(() => {
     onShowCountFromLS();
@@ -26,7 +31,7 @@ const Counter = ({ goods, full = false, onGetSum }) => {
     if (onGetSum) {
       onGetSum();
     }
-  }, [count]);
+  }, [count, goods]);
 
   const decrease = () => {
     setCount((prev) => {

@@ -6,34 +6,7 @@ import Loader from "../../gui/Loader/Loader.js";
 import HeaderLogo from "../../../components/gui/HeaderLogo/HeaderLogo";
 import "./GoodsList.scss";
 import axios from "axios";
-
-const goods_data_from_server = [
-  {
-    items: [
-      {
-        name: "goods 1",
-        price: 100,
-      },
-      {
-        name: "goods 1",
-        price: 100,
-      },
-      {
-        name: "goods 1",
-        price: 100,
-      },
-      {
-        name: "goods 1",
-        price: 100,
-      },
-    ],
-    address: {
-      street: "string",
-      city: "string",
-      zip_code: "string",
-    },
-  },
-];
+import { goods_data_from_server } from "../../../data/data.js";
 
 const GoodsList = () => {
   const [goods, setGoods] = useState([]);
@@ -70,7 +43,7 @@ const GoodsList = () => {
 
   return (
     <>
-      <HeaderLogo />
+      {/* <HeaderLogo /> */}
       {/* <CarouselGoods onChooseTypeGoods={onChooseTypeGoods} /> */}
       {content}
     </>
@@ -84,7 +57,7 @@ const List = ({ goods }) => {
         {goods.map((el, i) => {
           return (
             <li key={el.id}>
-              <GoodsCard title={el.name} img={""} price={el.price} descr={""} id={i} composition={""} type={""} />
+              <GoodsCard title={el.name} img={""} price={el.price} descr={""} id={el.id} composition={""} type={""} />
             </li>
           );
         })}

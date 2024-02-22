@@ -7,19 +7,20 @@ import heartNoActive from "../../../images/no_active_heart.svg";
 import UseGoodsService from "../../../services/UseGoodsService";
 import Loader from "../../gui/Loader/Loader";
 import Counter from "../Counter/Counter.js";
+import { goods_data_from_server } from "../../../data/data.js";
 
 const GoodsInterfase = () => {
-  const { id_goods, type } = useParams();
+  const { id, type } = useParams();
   const { onGetGoodsById, loading } = UseGoodsService();
-  const [propsGoods, setPropertiesGoods] = useState({ title: "..." });
+  const [propsGoods, setPropertiesGoods] = useState({ title: "...", price: 0 });
   const [show, setShowWish] = useState(false);
 
   useEffect(() => {
     // тут надо сделаьть запрос на получение товара по id
-
-    onGetGoodsById(type, id_goods).then((data) => {
-      setPropertiesGoods(data);
-    });
+    if (id) {
+      // console.log(goods_data_from_server[0].items.find((el) => el.id == id));
+      setPropertiesGoods(goods_data_from_server[0].items.find((el) => el.id == id));
+    }
   }, []);
 
   useEffect(() => onShowWishGoods(), [propsGoods]);
@@ -70,7 +71,7 @@ const GoodsInterfase = () => {
 
   return (
     <div>
-      <Header extension={true} title={`Авторский букет ${loading ? "..." : "«" + propsGoods.title + "»"}`} button={false} />
+      <Header extension={true} title={``} button={false} />
       {loading ? (
         <div className="center_loader">
           <Loader />
@@ -91,7 +92,7 @@ const GoodsInterfase = () => {
           </div>
           <div className="goods__title__interfase">
             <div className="goods__text__interfase">
-              <br />«{propsGoods.title}»
+              <br />«{propsGoods.name}»
             </div>
           </div>
           <div className="goods__descr__interfase">{propsGoods.descr}</div>

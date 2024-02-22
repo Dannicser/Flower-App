@@ -9,7 +9,7 @@ const Catalog = () => {
     <>
       <Routes>
         <Route path="/" element={<GoodsList />} />
-        <Route path="/:type/:id_goods" element={<GoodsInterfase />} />
+        <Route path="/:id" element={<GoodsInterfase />} />
         <Route path="/search" element={<Search />} />
         <Route path="/map" element={<Map />} />
       </Routes>
